@@ -1,5 +1,5 @@
-#Trabajo Practico Integrador
-##Integrantes
+# Trabajo Practico Integrador
+## Integrantes
 * Acosta, Gonzalo
 * Arrejin, Sixto
 * Maciel Meister, Tobias
