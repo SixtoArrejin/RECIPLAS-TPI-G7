@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import RegistrarPedido from "./Paginas/RegistarPedido.js";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./Paginas/Layout.js";
 
 function App() {
+  document.title = "dead";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="registrarpedido" element={<RegistrarPedido />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
 
 export default App;
+
+/* import SideBar from "./Sidebar";
+import Tabla from "./Tabla";
+import "./componentsStyles.css";
+import Input from "./InputMUI.js";
+import Page from "./Paginas/Page";
+import Header from "./Header"
+
+function App() {
+  return (
+    <>
+      {" "}
+      <Header/>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <SideBar style={{ display: "flex", flexDirection: "row" }} />
+        <Page />
+      </div>
+    </>
+  );
+}
+
+export default App; */
