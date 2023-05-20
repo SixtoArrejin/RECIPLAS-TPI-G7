@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import RegisterProductPage from "./pages/RegisterProductPage";
+// import RegProductos from "./administracion/RegProductos";
+import BarraLateral from "./components/BarraLateral";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Compras from "./pages/Compras";
+// import ResponsiveAppBar from "./Components/ResponsiveAppBar";
+//import './App.css'; // Agregar archivo de estilos CSS
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	document.title = 'dead';
+
+	return (
+		<div>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route path="registrar-producto" element={<RegisterProductPage />} />
+					<Route path="home" element={<div>Home</div>} />
+					<Route path="compras" element={<Compras /> } />
+				</Route>
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
