@@ -72,5 +72,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### `Paquetes vistas Ventas`
 npm install @mui/material @emotion/react @emotion/styled @mui/icons-material \
 npm install @mui/x-data-grid \
-npm install react-pro-sidebar \
+npm install react-pro-sidebar
 
