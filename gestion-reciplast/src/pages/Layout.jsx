@@ -11,7 +11,7 @@ function Layout() {
           <BarraSuperior /> 
           <div className="app-container" style={{ display: "flex", flexDirection: "row", width: "100%" }}>
             <BarraLateral />
-          
+            
             
             <Outlet />
           </div>
