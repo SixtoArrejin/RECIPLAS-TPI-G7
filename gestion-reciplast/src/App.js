@@ -4,6 +4,8 @@ import BarraLateral from "./components/BarraLateral";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Compras from "./pages/administracion/Compras";
+import NuevoUsuario from "./pages/administracion/NuevoUsuario";
+import Ventas from "./pages/administracion/Ventas";
 // import ResponsiveAppBar from "./Components/ResponsiveAppBar";
 //import './App.css'; // Agregar archivo de estilos CSS
 
@@ -17,6 +19,8 @@ function App() {
 					<Route path="registrar-producto" element={<RegisterProductPage />} />
 					<Route path="home" element={<div>Home</div>} />
 					<Route path="compras" element={<Compras /> } />
+					<Route path="nuevo-usuario" element={<NuevoUsuario /> } />
+					<Route path="ventas" element={<Ventas /> } />
 				</Route>
 			</Routes>
 		</div>
