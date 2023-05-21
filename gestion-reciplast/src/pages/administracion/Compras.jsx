@@ -1,6 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import CollapsibleTable from "../components/CollapsibleTable"
+import CollapsibleTable from "../../components/CollapsibleTable";
 
 function Compras() {
     return (

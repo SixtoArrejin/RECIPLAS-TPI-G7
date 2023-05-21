@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material mui-file-input react-router-dom react-pro-sidebar
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

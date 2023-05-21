@@ -1,9 +1,9 @@
-import RegisterProductPage from "./pages/RegisterProductPage";
+import RegisterProductPage from "./pages/administracion/RegisterProductPage";
 // import RegProductos from "./administracion/RegProductos";
 import BarraLateral from "./components/BarraLateral";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
-import Compras from "./pages/Compras";
+import Compras from "./pages/administracion/Compras";
 // import ResponsiveAppBar from "./Components/ResponsiveAppBar";
 //import './App.css'; // Agregar archivo de estilos CSS
 
