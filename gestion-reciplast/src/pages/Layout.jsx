@@ -3,11 +3,11 @@ import { Outlet } from "react-router-dom";
 import BarraLateral from "../components/BarraLateral";
 import BarraSuperior from "../components/BarraSuperior";
 
-function Layout( {data} ) {
+function Layout( {data, accion } ) {
     return (
 
       <div>
-          <BarraSuperior /> 
+          <BarraSuperior accion= {accion} /> 
           <div className="app-container" style={{ display: "flex", flexDirection: "row", width: "100%" }}>
           <BarraLateral campos = {data} />
           

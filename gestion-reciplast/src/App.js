@@ -44,41 +44,43 @@ const usuarios= ["Pepe", "Luis", "Carlos" ]
 
 
 function App() {
-  document.title = 'dead';
+	document.title = 'dead';
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
-    if (storedLoggedInStatus === 'true') {
-      setIsLoggedIn(true);
-    }
-  }, []);
 
-  useEffect(() => {
-    localStorage.setItem('isLoggedIn', isLoggedIn.toString());
-  }, [isLoggedIn]);
+	const [isLoggedIn, setIsLoggedIn] = useState(() => {
+		const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
+		return storedLoggedInStatus === 'true';
+	  });
+	
+	  useEffect(() => {
+		localStorage.setItem('isLoggedIn', isLoggedIn.toString());
+	  }, [isLoggedIn]);
+	
+	  const handleLogin = () => {
+		setIsLoggedIn(true);
+	  };
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
 
-  return (
-    <div>
-      <Routes>
-        {!isLoggedIn && <Route path="/" element={<Navigate to="/login" replace />} />}
-        <Route path="login" element={<Registro accion={handleLogin}  usuarios= {usuarios} />} />
-        <Route path="/" element={<Layout data={data} />}>
-          {/* Rutas protegidas */}
-          <Route path="materias-primas/listado" element={<ListadoMP />} />
-          <Route path="materias-primas/agregar" element={<AgregarMateriaPrima />} />
-          <Route path="productos-fabricados" element={<ProductosFabricados />} />
-          <Route path="pedidos" element={<Pedidos />} />
-          <Route path="/" element={<Home />} />
-        </Route>
-      </Routes>
-    </div>
-  );
-}
 
-export default App;
+
+	return (
+		<div>
+		  <Routes>
+			{!isLoggedIn && <Route path="/" element={<Navigate to="/login" replace />} />}
+			
+			<Route path="login" element={<Registro accion={handleLogin}  usuarios= {usuarios} />} />
+			<Route path="/" element={<Layout data={data} accion={setIsLoggedIn} />}>
+			  {/* Rutas protegidas */}
+			  <Route path="materias-primas/listado" element={<ListadoMP />} />
+			  <Route path="materias-primas/agregar" element={<AgregarMateriaPrima />} />
+			  <Route path="productos-fabricados" element={<ProductosFabricados />} />
+			  <Route path="pedidos" element={<Pedidos />} />
+			  <Route path="/" element={<Home />} />
+			</Route>
+		  </Routes>
+		</div>
+	  );
+	}
+	
+	export default App;

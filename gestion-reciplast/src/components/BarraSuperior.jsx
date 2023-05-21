@@ -17,7 +17,7 @@ import MiImagen2 from './foto3.jpg'
 const pages = [];
 const settings = ["Cuenta", "Ajustes", "Logout"];
 
-function BarraSuperior() {
+function BarraSuperior( {accion} ) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -33,7 +33,7 @@ function BarraSuperior() {
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    accion(false)
   };
 
   return (
