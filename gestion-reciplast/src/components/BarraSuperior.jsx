@@ -11,11 +11,11 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import Hasbulla from "../imagenes/Hasbulla.jpg";
-import Logo from "../imagenes/Logo.jpg"
+import MiImagen from './foto2.png'
+import MiImagen2 from './foto3.jpg'
 
 const pages = [];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Cuenta", "Ajustes", "Logout"];
 
 function BarraSuperior() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,10 +37,10 @@ function BarraSuperior() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#333" }}>
+    <AppBar position="static" sx={{ backgroundColor: "#395372" }}>
       <Container maxWidth="x1">
         <Toolbar disableGutters>
-        <img src={Logo} alt="Hasbulla hacker" width={110} height={30} sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+        <img src= {MiImagen} alt="Gestion Reciplas" height={50} sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -112,7 +112,7 @@ function BarraSuperior() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Hasbulla" src={Hasbulla} />
+                <Avatar alt="Hasbulla" src= {MiImagen2} />
               </IconButton>
             </Tooltip>
             <Menu

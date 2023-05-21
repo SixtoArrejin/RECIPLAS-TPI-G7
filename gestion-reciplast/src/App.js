@@ -1,26 +1,84 @@
-import RegisterProductPage from "./pages/RegisterProductPage";
-// import RegProductos from "./administracion/RegProductos";
+import Tabla from "./components/Tabla";
 import BarraLateral from "./components/BarraLateral";
-import { Route, Routes } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Compras from "./pages/Compras";
-// import ResponsiveAppBar from "./Components/ResponsiveAppBar";
-//import './App.css'; // Agregar archivo de estilos CSS
+import { Login, WidthFull } from "@mui/icons-material";
+import Navegacion from "./components/Navegacion";
+import TablaCompleta from "./components/TablaCompleta";
+import { Route } from "react-router-dom";
+import { Routes } from "react-router-dom";
+import { BrowserRouter,  Navigate } from 'react-router-dom';
+import  Layout  from "./pages/Layout";
+import  Home  from "./pages/Home";
+import ListadoMP from "./pages/ListadoMP";
+import ProductosFabricados from "./pages/ProductosFabricados";
+import Pedidos from "./pages/Pedidos";
+import Registro from "./pages/Registro";
+import AgregarMateriaPrima from "./pages/AgregarMateriaPrima";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+
+import { useState, useEffect } from "react";
+
+
+
+
+
+
+
+const data = [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
+              { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Pedidos', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> }]
+
+
+  
+
+
+const usuarios= ["Pepe", "Luis", "Carlos" ]
+
+
+
 
 function App() {
-	document.title = 'dead';
+  document.title = 'dead';
 
-	return (
-		<div>
-			<Routes>
-				<Route path="/" element={<Layout />}>
-					<Route path="registrar-producto" element={<RegisterProductPage />} />
-					<Route path="home" element={<div>Home</div>} />
-					<Route path="compras" element={<Compras /> } />
-				</Route>
-			</Routes>
-		</div>
-	);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
+    if (storedLoggedInStatus === 'true') {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('isLoggedIn', isLoggedIn.toString());
+  }, [isLoggedIn]);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  return (
+    <div>
+      <Routes>
+        {!isLoggedIn && <Route path="/" element={<Navigate to="/login" replace />} />}
+        <Route path="login" element={<Registro accion={handleLogin}  usuarios= {usuarios} />} />
+        <Route path="/" element={<Layout data={data} />}>
+          {/* Rutas protegidas */}
+          <Route path="materias-primas/listado" element={<ListadoMP />} />
+          <Route path="materias-primas/agregar" element={<AgregarMateriaPrima />} />
+          <Route path="productos-fabricados" element={<ProductosFabricados />} />
+          <Route path="pedidos" element={<Pedidos />} />
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
