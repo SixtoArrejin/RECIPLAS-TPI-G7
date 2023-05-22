@@ -5,18 +5,22 @@ import  { useState } from 'react';
 
 
 
-function Registro({ accion, usuarios }) {
+function Registro({ accion, usuarios, handleArea }) {
   const navigate = useNavigate();
 
   const [usuario, setUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
 
+
   const handleButtonClick = () => {
-    if (usuarios.includes(usuario)) {
-      accion(true);
+    const usuarioEncontrado = usuarios.find((u) => u.nombre === usuario);
+    if (usuarioEncontrado) {
+      accion(true)
+      handleArea(usuarioEncontrado.area);
       navigate('/');
     }
   };
+
 
   return (
     <div>

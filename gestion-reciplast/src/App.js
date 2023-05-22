@@ -20,7 +20,7 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-
+import Regsitro2 from "./pages/Registro2";
 import { useState, useEffect } from "react";
 
 
@@ -28,17 +28,22 @@ import { useState, useEffect } from "react";
 
 
 
-
-const data = [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+const areasData = {
+    produccion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
               { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
               { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
-              { nombre: 'Pedidos', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> }]
-
-
+              { nombre: 'Pedidos', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> }] , 
+			  
+	administracion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Usuarios', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
+              { nombre: 'Compras', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Ventas', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> },
+			  { nombre: 'Materia Prima', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> } ]
+}
   
 
 
-const usuarios= ["Pepe", "Luis", "Carlos" ]
+const usuarios= [ {nombre: "Pepe", area: "administracion"}, {nombre: "Luis", area: "produccion"} ]
 
 
 
@@ -61,18 +66,27 @@ function App() {
 		setIsLoggedIn(true);
 	  };
 
+	const [areaEmpresa, setArea] = useState(' ')
 
+	const handleArea = (usuarioArea) => {
+		setArea(usuarioArea);
+	  };
 
+const datosArea = areasData[areaEmpresa] || [];
 
 	return (
 		<div>
 		  <Routes>
 			{!isLoggedIn && <Route path="/" element={<Navigate to="/login" replace />} />}
 			
-			<Route path="login" element={<Registro accion={handleLogin}  usuarios= {usuarios} />} />
-			<Route path="/" element={<Layout data={data} accion={setIsLoggedIn} />}>
+			<Route path="login" element={<Registro accion={handleLogin}  usuarios= {usuarios} handleArea={handleArea} />} />
+
+
+
+
+			<Route path="/" element={<Layout data={datosArea} accion={setIsLoggedIn} />}>
 			  {/* Rutas protegidas */}
-			  <Route path="materias-primas/listado" element={<ListadoMP />} />
+			  <Route path="materias-primas/listado" element={<Regsitro2 />} />
 			  <Route path="materias-primas/agregar" element={<AgregarMateriaPrima />} />
 			  <Route path="productos-fabricados" element={<ProductosFabricados />} />
 			  <Route path="pedidos" element={<Pedidos />} />
