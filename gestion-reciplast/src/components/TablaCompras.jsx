@@ -51,7 +51,7 @@ function Row(props) {
         <TableCell align="right">{row.id}</TableCell>
         <TableCell align="right">{row.fecha}</TableCell>
         <TableCell align="right">{row.total}</TableCell>
-        <TableCell>
+        <TableCell align="center">
           <IconButton
             aria-label="expand row"
             size="small"
@@ -74,26 +74,26 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Producto</TableCell>
-                    <TableCell align="right">Descripcion</TableCell>
-                    <TableCell>P/U</TableCell>
-                    <TableCell align="right">Cantidad</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell align="center">Producto</TableCell>
+                    <TableCell align="center">Descripcion</TableCell>
+                    <TableCell align="center">P/U</TableCell>
+                    <TableCell align="center">Cantidad</TableCell>
+                    <TableCell align="center">Total price ($)</TableCell>
 
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map((historyRow) => (
                     <TableRow key={historyRow.name}>
-                      <TableCell component="th" scope="row">
+                      <TableCell component="th" scope="row" align="center">
                         {historyRow.name}
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="center">
                         {historyRow.descripcion}
                       </TableCell>
-                      <TableCell>{historyRow.pu}</TableCell>
-                      <TableCell align="right">{historyRow.cantidad}</TableCell>
-                      <TableCell align="right">
+                      <TableCell align="center">{historyRow.pu}</TableCell>
+                      <TableCell align="center">{historyRow.cantidad}</TableCell>
+                      <TableCell align="center">
                         {Math.round(historyRow.cantidad * historyRow.pu * 100) / 100}
                       </TableCell>
 
@@ -139,7 +139,7 @@ export default function TablaCompras() {
               <TableCell align="right"><Typography variant="h6" color="initial">ID</Typography></TableCell>
               <TableCell align="right"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
               <TableCell align="right"><Typography variant="h6" color="initial">Total</Typography></TableCell>
-              <TableCell align="right"><Typography variant="h6" color="initial">Detalles</Typography></TableCell>
+              <TableCell align="center"><Typography variant="h6" color="initial">Detalles</Typography></TableCell>
 
             </TableRow>
           </TableHead>
