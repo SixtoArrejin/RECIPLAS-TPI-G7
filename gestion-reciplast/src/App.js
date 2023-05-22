@@ -1,19 +1,15 @@
 import RegistrarPedido from "./Paginas/RegistarPedido.js";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Paginas/Layout.js";
-import ListadoCli from "./Paginas/ListadoClientes.js"
 
 function App() {
-  document.title = "RECIPLAST";
+  document.title = "dead";
 
   return (
     <div>
       <Routes>
-        <Route key = "layout" path="/" element={<Layout />}>
-
-        {/*Departamento de ventas */}
-        <Route key = "registrarpedido" path="/registrarpedido" element={<RegistrarPedido />} />
-        <Route key = "listadoCliente" path="/listadoCli" element={<ListadoCli />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="registrarpedido" element={<RegistrarPedido />} />
         </Route>
       </Routes>
     </div>
