@@ -86,7 +86,7 @@ const datosArea = areasData[areaEmpresa] || [];
 
 			<Route path="/" element={<Layout data={datosArea} accion={setIsLoggedIn} />}>
 			  {/* Rutas protegidas */}
-			  <Route path="materias-primas/listado" element={<Regsitro2 />} />
+			  <Route path="materias-primas/listado" element={<ListadoMP />} />
 			  <Route path="materias-primas/agregar" element={<AgregarMateriaPrima />} />
 			  <Route path="productos-fabricados" element={<ProductosFabricados />} />
 			  <Route path="pedidos" element={<Pedidos />} />
