@@ -1,5 +1,6 @@
 import React from "react";
 import TablaCompleta from "../components/TablaCompleta";
+import TablaMP from "../components/TablaMP";
 
 
 const ListadoMP = () => {
@@ -10,3 +11,7 @@ const ListadoMP = () => {
 
 
 export default ListadoMP;
+
+
+
+// <TablaCompleta titulo= "Stock Materia Prima" />

@@ -1,11 +1,16 @@
 import React from "react";
+import CampoValor from "../components/CampoValor";
 
 const Home = () => {
 
     document.title = 'Home';
 
     return (
-        <h1> Home </h1>
+        <div>
+                  <h1> Home </h1>
+                  <CampoValor nombre="Edad" valor="25" />
+        </div>
+      
     )
 }
 
