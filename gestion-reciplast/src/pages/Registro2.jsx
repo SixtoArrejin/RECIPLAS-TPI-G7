@@ -9,28 +9,37 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useNavigate } from 'react-router-dom';
+import  { useState } from 'react';
+import "../App.css";
 
 
 
 import TextField from "@mui/material/TextField";
 
 
-function MultilineTextFields(props) {
+function MultilineTextFields( {nombre, usuario, setUsuario} ) {
+
+  
+
+
   return (
     <div style={{padding:"15px"}}>
       <TextField
         id="filled-multiline-flexible"
-        label={props.nombre}
+        label={nombre}
         multiline
         variant="filled"
         style={{width:"90%"}}
+        value={usuario} 
+        onChange={(e) => setUsuario(e.target.value)}
       />
     </div>
   );
 }
 
 
-function InputAdornments (props) {
+function InputAdornments ({nombre, contrasena, setContrasena}) {
     const [showPassword, setShowPassword] = React.useState(false);
   
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -43,11 +52,13 @@ function InputAdornments (props) {
       <div style={{ padding: "15px" }}>
         <FormControl variant="filled" style={{ width: "90%" }}>
           <InputLabel htmlFor="filled-adornment-password">
-            {props.nombre}
+            {nombre}
           </InputLabel>
           <FilledInput
             id="filled-adornment-password"
             type={showPassword ? "text" : "password"}
+            value={contrasena} 
+            onChange={(e) => setContrasena(e.target.value)}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -68,41 +79,59 @@ function InputAdornments (props) {
 
 
 
-
-function Registro2() {
-  return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f1f1f1",
-      }}
-    >
-      <div className="CajaLogin">
-        {" "}
-        <h1 style={{ padding: "20px" }}>Login</h1>
-        <MultilineTextFields nombre={"Usuario"} />
-        <InputAdornments nombre={"Contraseña"} />
-        <div
-          style={{display:"flex", justifyContent:"space-between", width: "88%", padding: "5px 0 10px 0", margin:"0px auto" }}
-        >
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-            style={{ padding: "10px 6px",}}
-          />
-          <button className="Button">Iniciar sesión</button>
+  
+  function Registro2({ accion, usuarios, handleArea }) {
+    const navigate = useNavigate();
+  
+    const [usuario, setUsuario] = useState('');
+    const [contrasena, setContrasena] = useState('');
+  
+    const handleButtonClick = () => {
+      const usuarioEncontrado = usuarios.find((u) => u.nombre === usuario);
+      if (usuarioEncontrado && usuarioEncontrado.contrasena === contrasena ) {
+        accion(true);
+        handleArea(usuarioEncontrado.area);
+        navigate('/');
+      }
+    };
+  
+    return (
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#f1f1f1",
+        }}
+      >
+        <div className="CajaLogin">
+          <h1 style={{ padding: "20px" }}>Login</h1>
+          <MultilineTextFields nombre={"Usuario"} usuario={usuario} setUsuario={setUsuario} />
+          <InputAdornments nombre={"Contraseña"} contrasena={contrasena} setContrasena={setContrasena} />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "88%",
+              padding: "5px 0 10px 0",
+              margin: "0px auto",
+            }}
+          >
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+              style={{ padding: "10px 6px" }}
+            />
+            <button className="Button" onClick={handleButtonClick}> Iniciar sesión </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-
-
-export default Registro2;
+    );
+  }
+  
+  export default Registro2;
+  
 
 
 

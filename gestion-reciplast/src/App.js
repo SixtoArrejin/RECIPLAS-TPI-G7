@@ -25,6 +25,7 @@ import { useState, useEffect } from "react";
 import Compras from "./pages/Compras";
 import NuevoUsuario from "./pages/NuevoUsuario";
 import Ventas from "./pages/Ventas";
+import Registro2 from "./pages/Registro2";
 
 
 
@@ -36,7 +37,7 @@ const areasData = {
 			  
 	administracion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
               { nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
-			  { nombre: 'Productos fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
+			  { nombre: 'Productos fabricados', link: "productos-fabricados", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
 			  																									{nombre: "Agregar", link: "registrar-producto" } ]},
 			  { nombre: 'Compras', link: "compras", sub: true, icon: <HomeOutlinedIcon /> },
 			  { nombre: 'Ventas', link: "ventas", sub: true, icon: <HomeOutlinedIcon /> },
@@ -47,7 +48,7 @@ const areasData = {
   
 
 
-const usuarios= [ {nombre: "Pepe", area: "administracion"}, {nombre: "Luis", area: "produccion"} ]
+const usuarios= [ {nombre: "Pepe", area: "administracion", contrasena: "pepe" }, {nombre: "Luis", area: "produccion", contrasena: "luis" } ]
 
 
 
@@ -94,7 +95,7 @@ const datosArea = areasData[areaEmpresa] || [];
 		  <Routes>
 			{!isLoggedIn && <Route path="/" element={<Navigate to="/login" replace />} />}
 			
-			<Route path="login" element={<Registro accion={handleLogin}  usuarios= {usuarios} handleArea={handleArea} />} />
+			<Route path="login" element={<Registro2 accion={handleLogin}  usuarios= {usuarios} handleArea={handleArea} />} />
 
 			<Route path="/" element={<Layout area={areaEmpresa} data={datosArea} accion={setIsLoggedIn} />}>
 			  {/* Rutas protegidas */}
