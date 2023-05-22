@@ -45,9 +45,6 @@ function Row(props) {
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-        <TableCell component="th" scope="row">
-          <Checkbox />
-        </TableCell>
         <TableCell>{row.fecha}</TableCell>
         <TableCell component="th" scope="row" align="center">
           {row.name}
@@ -104,12 +101,6 @@ function Row(props) {
                 </TableBody>
               </Table>
               <br />
-              <Grid container
-                direction="row"
-                justifyContent="flex-end"
-                alignItems="center">
-                <Button variant="outlined">Imprimir</Button>
-              </Grid>
 
             </Box>
           </Collapse>
@@ -136,7 +127,6 @@ export default function TablaVentas() {
         <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
-              <TableCell> </TableCell>
               <TableCell><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Cliente</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Venta ID</Typography></TableCell>

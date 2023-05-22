@@ -28,6 +28,8 @@ import Ventas from "./pages/administracion/Ventas";
 import Clientes from "./pages/administracion/Clientes";
 import Proveedores from "./pages/administracion/Proveedores";
 import ClientesDeudores from "./pages/administracion/ClientesDeudores";
+import DetalleCompra from "./pages/administracion/DetalleCompra"
+import DetalleVenta from "./pages/administracion/DetalleVenta";
 
 
 
@@ -116,6 +118,8 @@ const datosArea = areasData[areaEmpresa] || [];
 			  <Route path="clientes" element={<Clientes /> } />
 			  <Route path="proveedores" element={<Proveedores /> } />
 			  <Route path="deudores" element={<ClientesDeudores /> } />
+			  <Route path="detalle-compra" element={<DetalleCompra /> } />
+			  <Route path="detalle-venta" element={<DetalleVenta /> } />
 			</Route>
 		  </Routes>
 		</div>
