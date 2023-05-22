@@ -22,9 +22,10 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import Regsitro2 from "./pages/Registro2";
 import { useState, useEffect } from "react";
-import Compras from "./pages/Compras";
-import NuevoUsuario from "./pages/NuevoUsuario";
-import Ventas from "./pages/Ventas";
+import Compras from "./pages/administracion/Compras";
+import NuevoUsuario from "./pages/administracion/NuevoUsuario";
+import Ventas from "./pages/administracion/Ventas";
+import Clientes from "./pages/administracion/Clientes";
 
 
 
@@ -34,14 +35,15 @@ const areasData = {
               { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
               { nombre: 'Pedidos', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> }] , 
 			  
-	administracion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+	administracion: [{  nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
               { nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
 			  { nombre: 'Productos fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
 			  																									{nombre: "Agregar", link: "registrar-producto" } ]},
 			  { nombre: 'Compras', link: "compras", sub: true, icon: <HomeOutlinedIcon /> },
 			  { nombre: 'Ventas', link: "ventas", sub: true, icon: <HomeOutlinedIcon /> },
 			  { nombre: 'Usuarios', link: "productos-fabricados", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Usuario", link: "listado-usuario" }, 
-			  																													{nombre: "Agregar", link: "nuevo-usuario" } ]} ]
+			  																													{nombre: "Agregar", link: "nuevo-usuario" } ]},
+			{ nombre: 'Clientes', link: "clientes", sub: true, icon: <HomeOutlinedIcon /> },]
 			  
 }
   
@@ -107,6 +109,7 @@ const datosArea = areasData[areaEmpresa] || [];
 			  <Route path="compras" element={<Compras /> } />
 			  <Route path="nuevo-usuario" element={<NuevoUsuario /> } />
 			  <Route path="ventas" element={<Ventas /> } />
+			  <Route path="clientes" element={<Clientes /> } />
 			</Route>
 		  </Routes>
 		</div>
