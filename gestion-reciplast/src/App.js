@@ -26,6 +26,9 @@ import Compras from "./pages/Compras";
 import NuevoUsuario from "./pages/NuevoUsuario";
 import Ventas from "./pages/Ventas";
 import Registro2 from "./pages/Registro2";
+import Prueba from "./pages/Prueba";
+import Modals from "./components/Modal";
+
 
 
 
@@ -100,7 +103,7 @@ const datosArea = areasData[areaEmpresa] || [];
 			<Route path="/" element={<Layout area={areaEmpresa} data={datosArea} accion={setIsLoggedIn} />}>
 			  {/* Rutas protegidas */}
 			  <Route path="materias-primas/listado" element={<ListadoMP />} />
-			  <Route path="materias-primas/agregar" element={<AgregarMateriaPrima />} />
+			  <Route path="materias-primas/agregar" element={<Modals />} />
 			  <Route path="productos-fabricados" element={<ProductosFabricados />} />
 			  <Route path="pedidos" element={<Pedidos />} />
 			  <Route path="/" element={<Home />} />

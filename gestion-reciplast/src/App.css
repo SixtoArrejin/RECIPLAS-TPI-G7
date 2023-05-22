@@ -48,3 +48,19 @@
     border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+
+
+  .App .openModalBtn {
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(87, 137, 230);
+    color: white;
+    cursor: pointer;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
