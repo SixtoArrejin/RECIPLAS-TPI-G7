@@ -26,6 +26,7 @@ import Compras from "./pages/administracion/Compras";
 import NuevoUsuario from "./pages/administracion/NuevoUsuario";
 import Ventas from "./pages/administracion/Ventas";
 import Clientes from "./pages/administracion/Clientes";
+import Proveedores from "./pages/administracion/Proveedores";
 
 
 
@@ -43,7 +44,8 @@ const areasData = {
 			  { nombre: 'Ventas', link: "ventas", sub: true, icon: <HomeOutlinedIcon /> },
 			  { nombre: 'Usuarios', link: "productos-fabricados", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Usuario", link: "listado-usuario" }, 
 			  																													{nombre: "Agregar", link: "nuevo-usuario" } ]},
-			{ nombre: 'Clientes', link: "clientes", sub: true, icon: <HomeOutlinedIcon /> },]
+			{ nombre: 'Clientes', link: "clientes", sub: true, icon: <HomeOutlinedIcon /> },
+			{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },]
 			  
 }
   
@@ -110,6 +112,7 @@ const datosArea = areasData[areaEmpresa] || [];
 			  <Route path="nuevo-usuario" element={<NuevoUsuario /> } />
 			  <Route path="ventas" element={<Ventas /> } />
 			  <Route path="clientes" element={<Clientes /> } />
+			  <Route path="proveedores" element={<Proveedores /> } />
 			</Route>
 		  </Routes>
 		</div>
