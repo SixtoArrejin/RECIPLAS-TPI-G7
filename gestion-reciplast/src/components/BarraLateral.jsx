@@ -41,7 +41,7 @@ function BarraLateral() {
                     <SubMenu icon={<HomeOutlinedIcon />} label="Compras/Ventas">
                         <Grid marginLeft="5%">
                             <NavLink to="/compras" style={{ color: "black" }} ><MenuItem icon={<PeopleOutlinedIcon />}>Compras</MenuItem></NavLink>
-                            <MenuItem icon={<PeopleOutlinedIcon />}>Item 2</MenuItem>
+                            <NavLink to="/ventas" style={{ color: "black" }} ><MenuItem icon={<PeopleOutlinedIcon />}>Ventas</MenuItem></NavLink>
                             <MenuItem icon={<PeopleOutlinedIcon />}>Item 3</MenuItem>
                         </Grid>
                     </SubMenu>

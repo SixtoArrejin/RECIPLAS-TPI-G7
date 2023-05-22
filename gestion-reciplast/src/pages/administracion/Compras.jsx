@@ -1,6 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import CollapsibleTable from "../../components/CollapsibleTable";
+import TablaCompras from "../../components/TablaCompras";
 
 function Compras() {
     return (
@@ -10,14 +10,18 @@ function Compras() {
                 <p><NavLink to="/home" >Home</NavLink> » Compras </p>
             </Grid>
 
-            <Grid container xs={9} direction="row" justifyContent="center" alignItems="center" border="1px solid black" borderRadius={8} padding={2}>
-                <Grid container xs={12} direction="row" justifyContent="center" alignItems="center">
-                    <Typography variant="h4" gutterBottom>
-                        COMPRAS
-                    </Typography>
-                </Grid>
+            <Grid container xs={12} direction="row" justifyContent="center" alignItems="center">
+                <Typography variant="h4" gutterBottom>
+                    LISTA DE COMPRAS
+                </Typography>
+            </Grid>
+
+            <Grid container xs={8} direction="row" justifyContent="center" alignItems="center"
+                // border="1px solid black" borderRadius={8} padding={2}
+                >
+
                 <Grid item>
-                    <CollapsibleTable />
+                    <TablaCompras />
                 </Grid>
             </Grid>
 

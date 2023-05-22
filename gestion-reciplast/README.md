@@ -3,6 +3,7 @@
 # Dependencias
 npm install @mui/material @emotion/react @emotion/styled @mui/icons-material mui-file-input react-router-dom react-pro-sidebar
 npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/x-data-grid
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

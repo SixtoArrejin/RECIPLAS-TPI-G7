@@ -13,26 +13,26 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Grid } from '@mui/material';
+import { Grid, TextField, Button } from '@mui/material';
 
-function createData(name, calories, fat, carbs, protein, price) {
+function createData(name, id, fecha, total) {
   return {
     name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
+    id,
+    fecha,
+    total,
     history: [
       {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
+        name: 'Botella',
+        pu: 35,
+        cantidad: 3,
+        descripcion: "Buen producto"
       },
       {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
+        name: 'Bolsas',
+        pu: 5,
+        cantidad: 1,
+        descripcion: "Buenisimo"
       },
     ],
   };
@@ -48,11 +48,9 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {row.name}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
-        <TableCell align="right">{row.price}</TableCell>
+        <TableCell align="right">{row.id}</TableCell>
+        <TableCell align="right">{row.fecha}</TableCell>
+        <TableCell align="right">{row.total}</TableCell>
         <TableCell>
           <IconButton
             aria-label="expand row"
@@ -69,37 +67,48 @@ function Row(props) {
 
             {/* Detalle de cada fila */}
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Detalle
+              <Typography variant="h5" gutterBottom component="div">
+                Detalle de compra
               </Typography>
+              <Typography variant="h6" color="initial">Proveedor: Don Moncho</Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
+                    <TableCell>Producto</TableCell>
+                    <TableCell align="right">Descripcion</TableCell>
+                    <TableCell>P/U</TableCell>
+                    <TableCell align="right">Cantidad</TableCell>
                     <TableCell align="right">Total price ($)</TableCell>
-                    <TableCell align="right">Fatality ($)</TableCell>
+
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
+                    <TableRow key={historyRow.name}>
                       <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
+                        {historyRow.name}
                       </TableCell>
                       <TableCell align="right">
-                        Pepe
+                        {historyRow.descripcion}
                       </TableCell>
+                      <TableCell>{historyRow.pu}</TableCell>
+                      <TableCell align="right">{historyRow.cantidad}</TableCell>
+                      <TableCell align="right">
+                        {Math.round(historyRow.cantidad * historyRow.pu * 100) / 100}
+                      </TableCell>
+
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
+              <br />
+              <Grid container
+                direction="row"
+                justifyContent="flex-end"
+                alignItems="center">
+                <Button variant="outlined">Imprimir</Button>
+              </Grid>
+
             </Box>
           </Collapse>
         </TableCell>
@@ -108,46 +117,30 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-  createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-  createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-  createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
-  createData('Jorge', 100, 100.0, 100, 100.9, 100.5),
+  createData('Plasticos', 9999, "02/03/2023", 2400),
+  createData('Compras para administación', 237, "15/03/2023", 37),
+  createData('Utiles para comercialización', 3465, "15/03/2023", 37),
+  createData('Ice cream sandwich', 235677, "15/03/2023", 37),
+  createData('Ice cream sandwich', 6587, "15/03/2023", 37),
+  createData('Ice cream sandwich', 95238, "15/03/2023", 37),
 ];
 
-export default function CollapsibleTable() {
+export default function TablaCompras() {
   return (
     <Grid>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
-              <TableCell><Typography variant="h6">Name</Typography></TableCell>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+
+              <TableCell><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
+              <TableCell align="right"><Typography variant="h6" color="initial">ID</Typography></TableCell>
+              <TableCell align="right"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
+              <TableCell align="right"><Typography variant="h6" color="initial">Total</Typography></TableCell>
+              <TableCell align="right"><Typography variant="h6" color="initial">Detalles</Typography></TableCell>
+
             </TableRow>
           </TableHead>
           <TableBody>
