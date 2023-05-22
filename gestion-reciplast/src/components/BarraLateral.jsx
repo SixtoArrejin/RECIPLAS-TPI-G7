@@ -20,7 +20,7 @@ import { NavLink } from "react-router-dom";
 
 
 
-function BarraLateral({ campos }) {
+function BarraLateral({ campos, area }) {
     const { collapseSidebar } = useProSidebar();
   
     return (
@@ -37,7 +37,7 @@ function BarraLateral({ campos }) {
                 collapseSidebar();
               }}
               style={{ textAlign: "center" }}
-            ></MenuItem>
+            > {area}  </MenuItem>
   
             {campos.map((campo) => {
               if (campo.sub) {

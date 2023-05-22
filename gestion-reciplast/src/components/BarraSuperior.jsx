@@ -39,7 +39,7 @@ function BarraSuperior( {accion} ) {
 
 
   const navigate = useNavigate();
-  
+
   const handlePepe = () => {
     accion(false);
     navigate('/');
