@@ -66,13 +66,24 @@ function App() {
 		setIsLoggedIn(true);
 	  };
 
-	const [areaEmpresa, setArea] = useState(' ')
+	const [areaEmpresa, setAreaEmpresa] = useState(() => {
+		const storedArea = localStorage.getItem('areaEmpresa');
+		return storedArea || '';
+	  });
+
+
+	  useEffect(() => {
+		localStorage.setItem('areaEmpresa', areaEmpresa);
+	  }, [areaEmpresa]);
+
 
 	const handleArea = (usuarioArea) => {
-		setArea(usuarioArea);
+		setAreaEmpresa(usuarioArea);
 	  };
 
+
 const datosArea = areasData[areaEmpresa] || [];
+
 
 	return (
 		<div>
@@ -80,9 +91,6 @@ const datosArea = areasData[areaEmpresa] || [];
 			{!isLoggedIn && <Route path="/" element={<Navigate to="/login" replace />} />}
 			
 			<Route path="login" element={<Registro accion={handleLogin}  usuarios= {usuarios} handleArea={handleArea} />} />
-
-
-
 
 			<Route path="/" element={<Layout data={datosArea} accion={setIsLoggedIn} />}>
 			  {/* Rutas protegidas */}
