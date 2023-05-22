@@ -13,14 +13,16 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Grid, TextField, Button } from '@mui/material';
+import { Grid, TextField, Button, Modal } from '@mui/material';
+import Modal1 from './Modal1';
 
-function createData(name, id, fecha, total) {
+function createData(proveedor, id, fecha, total, descripcion) {
   return {
-    name,
+    proveedor,
     id,
     fecha,
     total,
+    descripcion,
     history: [
       {
         name: 'Botella',
@@ -42,14 +44,18 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
+  const [openM, setOpenM] = React.useState(false);
+  const handleOpenM = () => setOpenM(true);
+  const handleCloseM = () => setOpenM(false);
+
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.id}
         </TableCell>
-        <TableCell align="right">{row.id}</TableCell>
         <TableCell align="right">{row.fecha}</TableCell>
+        <TableCell align="right">{row.proveedor}</TableCell>
         <TableCell align="right">{row.total}</TableCell>
         <TableCell align="center">
           <IconButton
@@ -70,7 +76,7 @@ function Row(props) {
               <Typography variant="h5" gutterBottom component="div">
                 Detalle de compra
               </Typography>
-              <Typography variant="h6" color="initial">Proveedor: Don Moncho</Typography>
+              <Typography variant="h6" color="initial">Descripcion: {row.descripcion}</Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
@@ -78,7 +84,7 @@ function Row(props) {
                     <TableCell align="center">Descripcion</TableCell>
                     <TableCell align="center">P/U</TableCell>
                     <TableCell align="center">Cantidad</TableCell>
-                    <TableCell align="center">Total price ($)</TableCell>
+                    <TableCell align="center">Total ($)</TableCell>
 
                   </TableRow>
                 </TableHead>
@@ -106,7 +112,8 @@ function Row(props) {
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="center">
-                <Button variant="outlined">Imprimir</Button>
+                <Button onClick={handleOpenM} variant="outlined">Imprimir</Button>
+                <Modal1 open={openM} handleClose={handleCloseM} titulo="Se imprimio con exito" parrafo="Aceptar o cancelar para volver a la pagina" />
               </Grid>
 
             </Box>
@@ -119,12 +126,12 @@ function Row(props) {
 
 
 const rows = [
-  createData('Plasticos', 9999, "02/03/2023", 2400),
-  createData('Compras para administación', 237, "15/03/2023", 37),
-  createData('Utiles para comercialización', 3465, "15/03/2023", 37),
-  createData('Ice cream sandwich', 235677, "15/03/2023", 37),
-  createData('Ice cream sandwich', 6587, "15/03/2023", 37),
-  createData('Ice cream sandwich', 95238, "15/03/2023", 37),
+  createData('Juliancito', 9999, "02/03/2023", 2400, "Plasticos varios"),
+  createData('El confiable Mario', 237, "15/03/2023", 37, "Compras para administación"),
+  createData('Super Plastic', 3465, "15/03/2023", 37, "Utiles para comercialización"),
+  createData('Don Moncho', 235677, "15/03/2023", 37, "Papeleria"),
+  createData('PepeGrillo', 6587, "15/03/2023", 37, "Articulos de limpieza"),
+  createData('Plasticos del Sur', 95238, "15/03/2023", 37, "Plasticos varios"),
 ];
 
 export default function TablaCompras() {
@@ -134,10 +141,9 @@ export default function TablaCompras() {
         <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
-
-              <TableCell><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
-              <TableCell align="right"><Typography variant="h6" color="initial">ID</Typography></TableCell>
+              <TableCell ><Typography variant="h6" color="initial">ID</Typography></TableCell>
               <TableCell align="right"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
+              <TableCell align="right"><Typography variant="h6" color="initial">Proveedor</Typography></TableCell>
               <TableCell align="right"><Typography variant="h6" color="initial">Total</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Detalles</Typography></TableCell>
 
