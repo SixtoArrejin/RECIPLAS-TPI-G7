@@ -14,6 +14,9 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Grid, TextField, Button } from '@mui/material';
+import Modal from "react-overlays/Modal";
+import { useState } from 'react';
+import "../Modal.css";
 
 function createData(name, id, fecha, total) {
   return {
@@ -42,14 +45,25 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
+  const [showModal, setShowModal] = useState(false);
+
+  // Backdrop JSX code
+  const renderBackdrop = (props) => <div className="backdrop" {...props} />;
+
+  var handleClose = () => setShowModal(false);
+
+  var handleSuccess = () => {
+    console.log("success");
+  };
+
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.fecha}
         </TableCell>
         <TableCell align="right">{row.id}</TableCell>
-        <TableCell align="right">{row.fecha}</TableCell>
+        <TableCell align="right">{row.name}</TableCell>
         <TableCell align="right">{row.total}</TableCell>
         <TableCell align="center">
           <IconButton
@@ -70,7 +84,7 @@ function Row(props) {
               <Typography variant="h5" gutterBottom component="div">
                 Detalle de compra
               </Typography>
-              <Typography variant="h6" color="initial">Proveedor: Don Moncho</Typography>
+              <Typography variant="h6" color="initial">Proveedor: PlastiPro Supply</Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
@@ -102,29 +116,71 @@ function Row(props) {
                 </TableBody>
               </Table>
               <br />
+
               <Grid container
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="center">
-                <Button variant="outlined">Imprimir</Button>
+                <Button variant="outlined" onClick={() => setShowModal(true)}>Imprimir</Button>
               </Grid>
+              {/* <div>
+                <button type="button" onClick={() => setShowModal(true)}>
+                  Open Modal
+                </button>
+              </div> */}
+
+              <Modal
+                className="modal"
+                show={showModal}
+                onHide={handleClose}
+                renderBackdrop={renderBackdrop}
+              >
+                <div>
+                  <div className="modal-header">
+                    <div className="modal-title">Imprimir Compra</div>
+                    <div>
+                      <span className="close-button" onClick={handleClose}>
+                        x
+                      </span>
+                    </div>
+                  </div>
+                  <div className="modal-desc">
+                    <p>¿Seguro que desea imprimir?</p>
+                  </div>
+                  <div className="modal-footer">
+                    <button className="secondary-button" onClick={handleClose}>
+                      Cancelar
+                    </button>
+                    <button className="primary-button" onClick={handleSuccess}>
+                      Imprimir
+                    </button>
+                  </div>
+                </div>
+              </Modal>
+
+              {/* <Grid container
+              direction="row"
+              justifyContent="flex-end"
+              alignItems="center">
+              <Button variant="outlined">Imprimir</Button>
+            </Grid> */}
 
             </Box>
           </Collapse>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </React.Fragment >
   );
 }
 
 
 const rows = [
-  createData('Plasticos', 9999, "02/03/2023", 2400),
-  createData('Compras para administación', 237, "15/03/2023", 37),
-  createData('Utiles para comercialización', 3465, "15/03/2023", 37),
-  createData('Ice cream sandwich', 235677, "15/03/2023", 37),
-  createData('Ice cream sandwich', 6587, "15/03/2023", 37),
-  createData('Ice cream sandwich', 95238, "15/03/2023", 37),
+  createData('Polietileno de baja densidad (PEBD)', 9999, "02/03/2023", 2400),
+  createData('Compras para administación', 237, "15/03/2023", 2374),
+  createData('Utiles para área ventas', 3465, "15/03/2023", 6543),
+  createData('Polietileno tereftalato (PET)', 235677, "15/03/2023", 3600),
+  createData('Poliestireno (PS)', 6587, "15/03/2023", 5000),
+  createData('Polietileno tereftalato (PET)', 95238, "15/03/2023", 2463),
 ];
 
 export default function TablaCompras() {
@@ -135,9 +191,9 @@ export default function TablaCompras() {
           <TableHead>
             <TableRow>
 
-              <TableCell><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
+              <TableCell align="left"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
               <TableCell align="right"><Typography variant="h6" color="initial">ID</Typography></TableCell>
-              <TableCell align="right"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
+              <TableCell align="right"><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
               <TableCell align="right"><Typography variant="h6" color="initial">Total</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Detalles</Typography></TableCell>
 

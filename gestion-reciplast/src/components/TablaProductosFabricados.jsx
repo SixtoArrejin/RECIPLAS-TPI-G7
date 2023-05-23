@@ -54,11 +54,8 @@ export default function TablaProductosFabricados() {
 
     const navigate = useNavigate();
 
-
     const handleClick = () => {
-      navigate('modificar-stock-producto'); // Reemplaza la ruta actual con la ruta '/productos'
-    };
-  
+      navigate('/modificar-stock-producto');}
 
 
 

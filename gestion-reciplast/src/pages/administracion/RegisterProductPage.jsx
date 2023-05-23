@@ -15,6 +15,9 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { NavLink } from 'react-router-dom';
 
+import Modal from "react-overlays/Modal";
+import "../../Modal.css";
+
 function RegisterProductPage() {
     const [productType, setProductType] = useState('');
     const [productName, setProductName] = useState('');
@@ -71,6 +74,29 @@ function RegisterProductPage() {
     const handleChange = (newFile) => {
         setFile(newFile)
     }
+
+
+    const [showModal, setShowModal] = useState(false);
+
+    // Backdrop JSX code
+    const renderBackdrop = (props) => <div className="backdrop" {...props} />;
+
+    var handleClose = () => setShowModal(false);
+
+    var handleSuccess = () => {
+        console.log("success");
+    };
+
+    const [showModal2, setShowModal2] = useState(false);
+
+    // Backdrop JSX code
+    const renderBackdrop2 = (props) => <div className="backdrop" {...props} />;
+
+    var handleClose2 = () => setShowModal2(false);
+
+    var handleSuccess2 = () => {
+        console.log("success");
+    };
 
 
     return (
@@ -169,12 +195,74 @@ function RegisterProductPage() {
                         direction="row"
                         justifyContent="space-around"
                         alignItems="center">
-                        <Button variant="contained" color="success">
+                        <Button variant="contained" color="success"
+                            onClick={() => setShowModal(true)}>
                             Registrar
                         </Button>
+
+                        <Modal
+                            className="modal"
+                            show={showModal}
+                            onHide={handleClose}
+                            renderBackdrop={renderBackdrop}
+                        >
+                            <div>
+                                <div className="modal-header">
+                                    <div className="modal-title">Registrar Nuevo Producto</div>
+                                    <div>
+                                        <span className="close-button" onClick={handleClose}>
+                                            x
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="modal-desc">
+                                    <p>¿Esta seguro de realizar dicha acción?</p>
+                                </div>
+                                <div className="modal-footer">
+                                    <button className="secondary-button" onClick={handleClose}>
+                                        Cancelar
+                                    </button>
+                                    <button className="primary-button" onClick={handleSuccess}>
+                                        Registrar
+                                    </button>
+                                </div>
+                            </div>
+                        </Modal>
+
                         {/* <button type="submit">Registrar</button> */}
-                        <Button variant="outlined">Cancelar</Button>
+                        <Button variant="outlined"
+                            onClick={() => setShowModal2(true)}
+                        >Cancelar</Button>
                         {/* <button type="button">Cancelar</button> */}
+                        <Modal
+                            className="modal"
+                            show={showModal2}
+                            onHide={handleClose2}
+                            renderBackdrop={renderBackdrop2}
+                        >
+                            <div>
+                                <div className="modal-header">
+                                    <div className="modal-title">Cancelar Registro</div>
+                                    <div>
+                                        <span className="close-button" onClick={handleClose2}>
+                                            x
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="modal-desc">
+                                    <p>¿Esta seguro que quiere cancelar el registro?</p>
+                                </div>
+                                <div className="modal-footer">
+                                    <button className="secondary-button" onClick={handleClose2}>
+                                        Volver
+                                    </button>
+                                    <button className="primary-button" onClick={handleSuccess2}>
+                                        Aceptar
+                                    </button>
+                                </div>
+                            </div>
+                        </Modal>
+
                     </Grid>
 
 

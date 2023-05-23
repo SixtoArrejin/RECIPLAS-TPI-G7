@@ -3,10 +3,15 @@ import TablaProductosFabricados from "../components/TablaProductosFabricados";
 
 import { WidthFull } from "@mui/icons-material";
 import Navegacion from "../components/Navegacion";
+import { useNavigate } from "react-router-dom";
 // Componente de la tabla
 
 
-export default function TablaCompleta(  ) {
+export default function ListadoProductosFabricados(  ) {
+
+
+
+
     return(
 
         <div className="main-content" style={{   margin: "0", padding: "0",  width:"100%" }}>
