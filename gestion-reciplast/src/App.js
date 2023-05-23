@@ -31,6 +31,7 @@ import ClientesDeudores from "./pages/administracion/ClientesDeudores";
 import DetalleCompra from "./pages/administracion/DetalleCompra"
 import DetalleVenta from "./pages/administracion/DetalleVenta";
 import ComprasRealizadas from "./pages/compras/ComprasRealizadas";
+import RegisterProductPage from "./pages/RegisterProductPage";
 
 
 
@@ -54,12 +55,16 @@ const areasData = {
 
 	compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
 			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,] ,
-			  
+	ventas: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+			{ nombre: 'Clientes', link: "", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Pedidos Clientes", link: "pedidos-clientes" }, {nombre: "Ver Clientes", link: "clientes" } ]} ,
+			{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },] ,		  
 }
-  
+  //RegistrarNuevoPedido
+  // Clientes: PedidosClinetes y ListadoClientes
+  // Listado de Proveedores e Informes
 
 
-const usuarios= [ {nombre: "Pepe", area: "administracion"}, {nombre: "Luis", area: "produccion"}, {nombre: "Chano", area: "compras"} ]
+const usuarios= [ {nombre: "Pepe", area: "administracion"}, {nombre: "Luis", area: "produccion"}, {nombre: "Chano", area: "compras"}, {nombre: "Tobias", area: "ventas"} ]
 
 
 
@@ -115,7 +120,7 @@ const datosArea = areasData[areaEmpresa] || [];
 			  <Route path="productos-fabricados" element={<ProductosFabricados />} />
 			  <Route path="pedidos" element={<Pedidos />} />
 			  <Route path="/" element={<Home />} />
-			  <Route path="registrar-producto" element={<ProductosFabricados/>} />
+			  <Route path="registrar-producto" element={<RegisterProductPage /> } />
 			  <Route path="compras" element={<Compras /> } />
 			  <Route path="nuevo-usuario" element={<NuevoUsuario /> } />
 			  <Route path="ventas" element={<Ventas /> } />
