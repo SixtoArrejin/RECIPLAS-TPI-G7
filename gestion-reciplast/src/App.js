@@ -36,6 +36,7 @@ import DetalleVenta from "./pages/administracion/DetalleVenta";
 import RegisterProductPage from "./pages/administracion/RegisterProductPage";
 import Hector from "./pages/administracion/RegisterProductPage";
 import Ventas from "./pages/administracion/Ventas";
+import ComprasRealizadas from "./pages/compras/ComprasRealizadas";
 
 
 
@@ -55,13 +56,15 @@ const areasData = {
 																																		{nombre: "Agregar", link: "nuevo-usuario" } ]},
 				{ nombre: 'Clientes', link: "clientes", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Clientes", link: "clientes" }, 
 				{nombre: "Deudores", link: "deudores" } ] },
-				{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },]
+				{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },],
+	compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,] 
 			  
 }
   
 
 
-const usuarios= [ {nombre: "Pepe", area: "administracion", contrasena: "pepe" }, {nombre: "Luis", area: "produccion", contrasena: "luis" } ]
+const usuarios= [ {nombre: "Pepe", area: "administracion", contrasena: "pepe" }, {nombre: "Luis", area: "produccion", contrasena: "luis" }, {nombre: "Acosta", area: "compras", contrasena: "acosta" } ]
 
 
 
@@ -127,6 +130,7 @@ const datosArea = areasData[areaEmpresa] || [];
 			  <Route path="deudores" element={<ClientesDeudores /> } />
 			  <Route path="detalle-compra" element={<DetalleCompra /> } />
 			  <Route path="detalle-venta" element={<DetalleVenta /> } />
+			  <Route path="compras-realizadas" element={<ComprasRealizadas /> } />
 
 
 

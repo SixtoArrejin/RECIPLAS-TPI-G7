@@ -17,7 +17,9 @@ import { Grid } from "@mui/material";
 
 import { NavLink } from "react-router-dom";
 
-
+const capitalizeFirstLetter = (area) => {
+  return area.charAt(0).toUpperCase() + area.slice(1);
+};
 
 
 function BarraLateral({ campos, area }) {
@@ -37,7 +39,7 @@ function BarraLateral({ campos, area }) {
                 collapseSidebar();
               }}
               style={{ textAlign: "center" }}
-            > {area}  </MenuItem>
+            > <h3>{capitalizeFirstLetter(area)}</h3>  </MenuItem>
   
             {campos.map((campo) => {
               if (campo.sub) {
