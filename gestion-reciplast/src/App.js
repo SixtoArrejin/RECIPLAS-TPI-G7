@@ -49,6 +49,11 @@ const areasData = {
               { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
               { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
               { nombre: 'Pedidos', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> }] , 
+
+	ventas: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
+              { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Registrar Pedidos', link: "registrar-pedido", sub: true, icon: <HomeOutlinedIcon /> }] , 
 			  
 	administracion: [{  nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
 					{ nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
@@ -61,12 +66,12 @@ const areasData = {
 				{ nombre: 'Clientes', link: "clientes", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Clientes", link: "clientes" }, 
 				{nombre: "Deudores", link: "deudores" } ] },
 				{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },],
-	compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,],
 
-	ventas: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Clientes', link: "", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Pedidos Clientes", link: "listado-pedidos" }, 
-																								{nombre: "Ver Clientes", link: "clientes" } ]} ] 
+
+
+
+	compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,]
 			  
 }
   
@@ -140,13 +145,12 @@ const datosArea = areasData[areaEmpresa] || [];
 			  <Route path="detalle-compra" element={<DetalleCompra /> } />
 			  <Route path="detalle-venta" element={<DetalleVenta /> } />
 			  <Route path="compras-realizadas" element={<ComprasRealizadas /> } />
-			  <Route path="/" element={<Layout />}>
 				<Route path="registrar-pedido" element={<RegistrarPedido />} />
 				<Route path="modificar-cliente" element={<ModificarCliente />} />
 				<Route path="listado-pedidos" element={<ListadoPedidos2 />} />
 				<Route path="detalles-pedidos" element={<DetallesPedidos />} />
 				<Route path="detalles-cliente" element={<DetallesCliente />} />
-				</Route>
+				
 
 
 
