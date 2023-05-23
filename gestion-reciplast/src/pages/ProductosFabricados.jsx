@@ -10,89 +10,27 @@ import Fustavo from "../imagenes/Hasbulla.jpg"
 import CampoValor from "../components/CampoValor";
 
 
-
-
-
-
 function Datos() {
-    return (
-      <React.Fragment>
-        <CssBaseline />
-        <div style={{ display: "inline", width: "100%", height: "100%" }}>
-          <Box
-            sx={{
-              padding: "20px",
-              width: "100%",
-              minheight: "100%",
-            }}
-          >
-            <Grid
-              container
-              rowSpacing={2}
-              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            >
-            <Grid item xs={3}>
-                
-                  <img src= {Fustavo} alt="meñique" width="100%" />
-                
-              </Grid>
+  return (
+    <div style={{ display: "flex", width:"85%"}}>
 
-              <Grid item xs={6}>
-                <CampoValor  nombre={"ID"} valor={"789191"} />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  fullWidth
-                  disabled
-                  id="Nombre Producto"
-                  label="Nombre Producto"
-                  defaultValue="Polipropileno"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  fullWidth
-                  disabled
-                  id="Descripcion"
-                  label="Descripcion"
-                  defaultValue="Es un plastico resistente y transparete"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  fullWidth
-                  disabled
-                  id="LocalidadCliente"
-                  label="Cant. Minima"
-                  defaultValue="24 g"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  fullWidth
-                  disabled
-                  id="ProvinciaCliente"
-                  label="Cant. Maxima"
-                  defaultValue="50 g"
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <TextField
-                  fullWidth
-                  disabled
-                  id="Fecha Ultima modificacion"
-                  label="Fecha ultima modificacion"
-                  defaultValue="22/07/2023"
-                />
-              </Grid>
-              
-            </Grid>
-          </Box>
-        </div>
-        <div></div>
-      </React.Fragment>
-    );
-  }
+
+      <div style={{width:"35%", paddingRight:"20px" }}>
+        <img src={Fustavo} alt="meñique" width="100%" />
+      </div>
+
+      <div >
+        <CampoValor nombre={"ID:"} valor={"789191"} />
+        <CampoValor nombre={"Nombre Producto:"} valor={"Polipropileno"} />
+        <CampoValor nombre={"Descripcion:"} valor={"Es un plastico resistente y transparete"} />
+        <CampoValor nombre={"Cant. Minima:"} valor={"24 g"} />
+        <CampoValor nombre={"Cant. Maxima"} valor={"50 g"} />
+        <CampoValor nombre={"Fecha ultima modificacion"} valor={"22/07/2023"} />
+      </div>
+
+    </div>
+  );
+}
 
 
 
@@ -113,7 +51,7 @@ function Datos() {
 
 
 export default function ProductosFabricados() {
- 
+
   const [showModal, setShowModal] = useState(false);
 
   // Backdrop JSX code
@@ -126,61 +64,63 @@ export default function ProductosFabricados() {
     setShowModal(false);
   };
 
-const [cantidad, setCantidad] = useState(' ');
-const [resultado, setResultado] = useState(' ');
+  const [cantidad, setCantidad] = useState(' ');
+  const [resultado, setResultado] = useState(' ');
 
 
 
 
   return (
-    <div className="modal-example" >
+    <div className="modal-example" style={{
+      width: "100%", justifyContent: "center",
+      alignItems: "center",
+      width: "100%"
+    }} >
 
+      <div>
 
-          <div style={{ width: "100%", paddingBottom: "30px" }}>
-            
-                <div style={{ marginBottom: "20px", marginLeft: "10%" }} >
-                <Navegacion/>
-                </div>
-
-
-                <div style={{ marginBottom: "20px", marginLeft: "5%" }} >
-
-                    <h1> Detalle de Productos Fabricados </h1>
-                </div>
-          </div>
-
-          <div className="Caja">
-            <Datos />
-
-
-            <Grid item xs={3}>
-                <TextField
-                  fullWidth
-                  disabled
-                  id="Fecha Ultima modificacion"
-                  label="Cantidad"
-                  defaultValue="23"
-                  value={resultado}
-                  
-                />
-              </Grid>
-              
-
-
-          </div>
-          <div className="Caja">
-            
-          </div>
-          {/* Aca va la tabla */}
-          <div className="Caja">
-            <div style={{ justifyContent: "right", width: "100%", padding:"20px", display:"flex"}}>
-              
-             
-            </div>
-          </div>
-          <div style={{ textAlign: "right", width: "90%" }}>
-            {" "}
+        <div style={{ marginBottom: "20px", marginLeft: "10%" }} >
+          <Navegacion />
         </div>
+
+
+        <div style={{ marginBottom: "20px", marginLeft: "5%", width:"100%" }} >
+          <h1> Detalle de Productos Fabricados </h1>
+        </div>
+      </div>
+
+      <div style={{ justifyContent: "center", alignItems: "center", width:"100%" }}>
+        <Datos />
+
+
+        <Grid item xs={3}>
+          <TextField
+            fullWidth
+            disabled
+            id="Fecha Ultima modificacion"
+            label="Cantidad"
+            defaultValue="23"
+            value={resultado}
+
+          />
+        </Grid>
+
+
+
+      </div>
+      <div className="Caja">
+
+      </div>
+      {/* Aca va la tabla */}
+      <div className="Caja">
+        <div style={{ justifyContent: "right", width: "100%", padding: "20px", display: "flex" }}>
+
+
+        </div>
+      </div>
+      <div style={{ textAlign: "right", width: "90%" }}>
+        {" "}
+      </div>
 
 
 
@@ -188,10 +128,10 @@ const [resultado, setResultado] = useState(' ');
 
       <div>
         <button type="button" onClick={() => setShowModal(true)}>
-            Modificar Stock
+          Modificar Stock
         </button>
       </div>
-    
+
 
       <Modal
         className="modal"
