@@ -42,18 +42,23 @@ import DetallesPedidos from "./pages/ventas/DetallesPedidos";
 import ModificarCliente from "./pages/ventas/ModificarCliente";
 import RegistrarPedido from "./pages/ventas/RegistrarPedido";
 import ListadoPedidos2 from "./pages/ventas/ListadoPedidos2";
+import ListadoProductosFabricados from "./pages/ListadoProductosFabricados";
 
 
 const areasData = {
     produccion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
               { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
               { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
-              { nombre: 'Pedidos', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> }] , 
+              { nombre: 'Pedidos', link: "listado-pedidos", sub: true, icon: <HomeOutlinedIcon /> }] , 
 
 	ventas: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-              { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
-              { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
-              { nombre: 'Registrar Pedidos', link: "registrar-pedido", sub: true, icon: <HomeOutlinedIcon /> }] , 
+			  { nombre: 'Clientes', link: "", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Pedidos Clientes", link: "listado-pedidos" }, 
+																								  {nombre: "Ver Clientes", link: "clientes" } ]} ,
+																								  { nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },
+			{ nombre: 'Pedidos', link: "registrar-pedido", sub: true, icon: <HomeOutlinedIcon /> },
+			{ nombre: 'Modificar Cliente', link: "modificar-cliente", sub: true, icon: <HomeOutlinedIcon /> },
+			{ nombre: 'Detalles pedido', link: "detalles-pedidos", sub: true, icon: <HomeOutlinedIcon /> }, 
+			{ nombre: 'Detalles cliente', link: "detalles-cliente", sub: true, icon: <HomeOutlinedIcon /> },],
 			  
 	administracion: [{  nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
 					{ nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
@@ -84,7 +89,7 @@ const usuarios= [ {nombre: "Pepe", area: "administracion", contrasena: "pepe" },
 
 
 function App() {
-	document.title = 'dead';
+	document.title = 'Gestion Reciplast';
 
 
 
@@ -131,7 +136,7 @@ const datosArea = areasData[areaEmpresa] || [];
 			  {/* Rutas protegidas */}
 			  <Route path="materias-primas/listado" element={<ListadoMP />} />
 			  <Route path="materias-primas/agregar" element={<Modals />} />
-			  <Route path="productos-fabricados" element={<ProductosFabricados />} />
+			  <Route path="productos-fabricados" element={<ListadoProductosFabricados />} />
 			  <Route path="pedidos" element={<Pedidos />} />
 			  <Route path="/" element={<Home />} />
 			  <Route path="modificar-stock-producto" element={<ProductosFabricados/>} />

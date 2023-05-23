@@ -39,7 +39,7 @@ function BarraLateral({ campos, area }) {
                 collapseSidebar();
               }}
               style={{ textAlign: "center" }}
-            > <h3> goku </h3>  </MenuItem>
+            > <h3> {capitalizeFirstLetter(area)} </h3>  </MenuItem>
   
             {campos.map((campo) => {
               if (campo.sub) {
