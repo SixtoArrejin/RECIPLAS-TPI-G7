@@ -6,71 +6,67 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useState } from "react";
 
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
+
+import Navegacion from "../../components/Navegacion";
+import Modal from "react-overlays/Modal";
 
 function FechaInput(props) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["DatePicker"]}>
-        <DatePicker label={props.nombre} defaultValue={dayjs('2022-04-17')} />
+        <DatePicker label={props.nombre} defaultValue={dayjs("2022-04-17")} />
       </DemoContainer>
     </LocalizationProvider>
   );
 }
-
 function DatosPedido() {
   return (
     <React.Fragment>
-      <div >
-        
+      <CssBaseline />
+      <div style={{ display: "inline", width: "100%", height: "100%" }}>
+        <Box
+          sx={{
+            padding: "20px",
+            width: "100%",
+            minheight: "100%",
+          }}
+        >
           <Grid
             container
-            spacing={1}
-            xs={12}
-            justifyContent="flex-start"
+            rowSpacing={2}
+            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
-            <Grid item xs={6} >
-              <FechaInput
-                nombre="Fecha de compra"
-                id="FechaPedido"
-                disabled
-                defaultValue="05/02/2022"
-              />
+            <Grid item xs={4}>
+              <FechaInput nombre="Fecha de pedido" id="FechaPedido" />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4}>
               <TextField
                 fullWidth
                 disabled
                 id="DNICliente"
-                label="ID"
-                defaultValue="32000"
+                label="DNI"
+                defaultValue="32000900"
               />
             </Grid>
-          </Grid>
-          <br /><br />
-          <Grid
-            container
-            spacing={1}
-            xs={12}
-            justifyContent="flex-start"
-          >
-            
-            <Grid item xs={6}>
+            <Grid item xs={4}>
               <TextField
                 fullWidth
                 disabled
-                id="DNICliente"
-                label="Proveedor"
-                defaultValue="Mario Bros"
+                id="DireccionCliente"
+                label="Dirección"
+                defaultValue="Calle Rivadavia 4200"
               />
             </Grid>
           </Grid>
+        </Box>
       </div>
       <div></div>
     </React.Fragment>
@@ -78,39 +74,83 @@ function DatosPedido() {
 }
 
 function DetalleCompra() {
+  const [showModal, setShowModal] = useState(false);
+
+  // Backdrop JSX code
+  const renderBackdrop = (props) => <div className="backdrop" {...props} />;
+
+  var handleClose = () => setShowModal(false);
+
+  var handleSuccess = () => {
+    console.log("success");
+  };
   return (
     <>
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="flex-start"
-      >
-        <div style={{ width: "100%", paddingBottom: "30px" }}>
-          <h1 style={{ margin: "0" }}>DETALLES DE COMPRA</h1>
+      <div className="Page">
+        <div className="ParteSuperior">
+          <div style={{ padding: "0px 0px 20px 20px" }}>
+            <Navegacion />
+          </div>
+          <h1 style={{ margin: "0" }}>DETALLE DE COMPRAS</h1>
         </div>
-        <div>
+        <div className="Caja">
           <DatosPedido />
         </div>
-
-        {/* Aca va la tabla */}
         <div className="Caja">
           <TablaDetalle />
-          <div style={{ justifyContent: "right", width: "100%", padding: "20px", display: "flex" }}>
-            <p style={{ paddingRight: "5px" }}>TOTAL ($):</p>
-            <TextField
-              disabled
-              defaultValue="1900 "
-            />
+          <div
+            style={{
+              justifyContent: "right",
+              width: "100%",
+              padding: "20px",
+              display: "flex",
+            }}
+          >
+            <p style={{ paddingRight: "5px" }}>TOTAL:</p>
+            <TextField disabled id="FechaRegistro" defaultValue="11060" />
           </div>
         </div>
-        <div style={{ textAlign: "center", width: "90%" }}>
+        <div
+          style={{
+            textAlign: "right",
+            width: "85%",
+            padding: "20px 0 20px 0",
+          }}
+        >
           {" "}
-          <Button variant="outlined" startIcon={<DeleteIcon />}>
+          <Button variant="outlined" onClick={() => setShowModal(true)}>
             Imprimir
           </Button>
         </div>
-      </Grid>
+        <Modal
+          className="modal"
+          show={showModal}
+          onHide={handleClose}
+          renderBackdrop={renderBackdrop}
+        >
+          <div>
+            <div className="modal-header">
+              <div className="modal-title">Imprimir Clientes Deudores</div>
+              <div>
+                <span className="close-button" onClick={handleClose}>
+                  x
+                </span>
+              </div>
+            </div>
+            <div className="modal-desc">
+              <p>¿Seguro que desea imprimir?</p>
+            </div>
+            <div className="modal-footer">
+              <button className="secondary-button" onClick={handleClose}>
+                Cancelar
+              </button>
+              <button className="primary-button" onClick={handleSuccess}>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </Modal>
+      </div>
     </>
   );
 }
