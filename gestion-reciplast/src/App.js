@@ -45,37 +45,34 @@ import ListadoPedidos2 from "./pages/ventas/ListadoPedidos2";
 
 
 const areasData = {
-  produccion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-  { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [{ nombre: "Ver Stock", link: "materias-primas/listado" }, { nombre: "Agregar", link: "materias-primas/agregar" }] },
-  { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
-  { nombre: 'Pedidos', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> }],
+    produccion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
+              { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Pedidos', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> }] , 
 
-  administracion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-  { nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
-  {
-    nombre: 'Productos fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon />, submenus: [{ nombre: "Ver Stock", link: "stock" },
-    { nombre: "Agregar", link: "registrar-producto" }]
-  },
-  { nombre: 'Compras', link: "compras", sub: true, icon: <HomeOutlinedIcon /> },
-  { nombre: 'Ventas', link: "ventas", sub: true, icon: <HomeOutlinedIcon /> },
-  {
-    nombre: 'Usuarios', link: "productos-fabricados", sub: false, icon: <HomeOutlinedIcon />, submenus: [{ nombre: "Ver Usuario", link: "listado-usuario" },
-    { nombre: "Agregar", link: "nuevo-usuario" }]
-  },
-  {
-    nombre: 'Clientes', link: "clientes", sub: false, icon: <HomeOutlinedIcon />, submenus: [{ nombre: "Ver Clientes", link: "clientes" },
-    { nombre: "Deudores", link: "deudores" }]
-  },
-  { nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },],
-  compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-  { nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [{ nombre: "Ver Stock", link: "materias-primas/listado" }, { nombre: "Agregar", link: "materias-primas/agregar" }] },],
+	ventas: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,
+              { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
+              { nombre: 'Registrar Pedidos', link: "registrar-pedido", sub: true, icon: <HomeOutlinedIcon /> }] , 
+			  
+	administracion: [{  nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+					{ nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
+					{ nombre: 'Productos fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
+																														{nombre: "Agregar", link: "registrar-producto" } ]},
+					{ nombre: 'Compras', link: "compras", sub: true, icon: <HomeOutlinedIcon /> },
+					{ nombre: 'Ventas', link: "ventas", sub: true, icon: <HomeOutlinedIcon /> },
+					{ nombre: 'Usuarios', link: "productos-fabricados", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Usuario", link: "listado-usuario" }, 
+																																		{nombre: "Agregar", link: "nuevo-usuario" } ]},
+				{ nombre: 'Clientes', link: "clientes", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Clientes", link: "clientes" }, 
+				{nombre: "Deudores", link: "deudores" } ] },
+				{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },],
 
-  ventas: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-  {
-    nombre: 'Clientes', link: "", sub: false, icon: <HomeOutlinedIcon />, submenus: [{ nombre: "Pedidos Clientes", link: "listado-pedidos" },
-    { nombre: "Ver Clientes", link: "clientes" }]
-  }]
 
+
+
+	compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,]
+			  
 }
 
 
@@ -130,31 +127,30 @@ function App() {
 
         <Route path="login" element={<Registro2 accion={handleLogin} usuarios={usuarios} handleArea={handleArea} />} />
 
-        <Route path="/" element={<Layout area={areaEmpresa} data={datosArea} accion={setIsLoggedIn} />}>
-          {/* Rutas protegidas */}
-          <Route path="materias-primas/listado" element={<ListadoMP />} />
-          <Route path="materias-primas/agregar" element={<Modals />} />
-          <Route path="productos-fabricados" element={<ProductosFabricados />} />
-          <Route path="pedidos" element={<Pedidos />} />
-          <Route path="/" element={<Home />} />
-          <Route path="modificar-stock-producto" element={<ProductosFabricados />} />
-          <Route path="registrar-producto" element={<RegisterProductPage />} />
-          <Route path="compras" element={<Compras />} />
-          <Route path="nuevo-usuario" element={<NuevoUsuario />} />
-          <Route path="ventas" element={<Ventas />} />
-          <Route path="clientes" element={<Clientes />} />
-          <Route path="proveedores" element={<Proveedores />} />
-          <Route path="deudores" element={<ClientesDeudores />} />
-          <Route path="detalle-compra" element={<DetalleCompra />} />
-          <Route path="detalle-venta" element={<DetalleVenta />} />
-          <Route path="compras-realizadas" element={<ComprasRealizadas />} />
-
-          <Route path="registrar-pedido" element={<RegistrarPedido />} />
-          <Route path="modificar-cliente" element={<ModificarCliente />} />
-          <Route path="listado-pedidos" element={<ListadoPedidos2 />} />
-          <Route path="detalles-pedidos" element={<DetallesPedidos />} />
-          <Route path="detalles-cliente" element={<DetallesCliente />} />
-
+			<Route path="/" element={<Layout area={areaEmpresa} data={datosArea} accion={setIsLoggedIn} />}>
+			  {/* Rutas protegidas */}
+			  <Route path="materias-primas/listado" element={<ListadoMP />} />
+			  <Route path="materias-primas/agregar" element={<Modals />} />
+			  <Route path="productos-fabricados" element={<ProductosFabricados />} />
+			  <Route path="pedidos" element={<Pedidos />} />
+			  <Route path="/" element={<Home />} />
+			  <Route path="modificar-stock-producto" element={<ProductosFabricados/>} />
+			  <Route path="registrar-producto" element={<RegisterProductPage /> } />
+			  <Route path="compras" element={<Compras /> } />
+			  <Route path="nuevo-usuario" element={<NuevoUsuario /> } />
+			  <Route path="ventas" element={<Ventas /> } />
+			  <Route path="clientes" element={<Clientes /> } />
+			  <Route path="proveedores" element={<Proveedores /> } />
+			  <Route path="deudores" element={<ClientesDeudores /> } />
+			  <Route path="detalle-compra" element={<DetalleCompra /> } />
+			  <Route path="detalle-venta" element={<DetalleVenta /> } />
+			  <Route path="compras-realizadas" element={<ComprasRealizadas /> } />
+				<Route path="registrar-pedido" element={<RegistrarPedido />} />
+				<Route path="modificar-cliente" element={<ModificarCliente />} />
+				<Route path="listado-pedidos" element={<ListadoPedidos2 />} />
+				<Route path="detalles-pedidos" element={<DetallesPedidos />} />
+				<Route path="detalles-cliente" element={<DetallesCliente />} />
+				
 
 
 
