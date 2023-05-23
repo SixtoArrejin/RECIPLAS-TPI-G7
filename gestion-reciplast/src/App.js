@@ -37,7 +37,11 @@ import RegisterProductPage from "./pages/administracion/RegisterProductPage";
 import Hector from "./pages/administracion/RegisterProductPage";
 import Ventas from "./pages/administracion/Ventas";
 import ComprasRealizadas from "./pages/compras/ComprasRealizadas";
-
+import DetallesCliente from "./pages/ventas/DetallesCliente";
+import DetallesPedidos from "./pages/ventas/DetallesPedidos";
+import ModificarCliente from "./pages/ventas/ModificarCliente";
+import RegistrarPedido from "./pages/ventas/RegistrarPedido";
+import ListadoPedidos2 from "./pages/ventas/ListadoPedidos2";
 
 
 const areasData = {
@@ -58,13 +62,18 @@ const areasData = {
 				{nombre: "Deudores", link: "deudores" } ] },
 				{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },],
 	compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,] 
+			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,],
+
+	ventas: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+			{ nombre: 'Clientes', link: "", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Pedidos Clientes", link: "listado-pedidos" }, 
+																								{nombre: "Ver Clientes", link: "clientes" } ]} ] 
 			  
 }
   
 
 
-const usuarios= [ {nombre: "Pepe", area: "administracion", contrasena: "pepe" }, {nombre: "Luis", area: "produccion", contrasena: "luis" }, {nombre: "Acosta", area: "compras", contrasena: "acosta" } ]
+const usuarios= [ {nombre: "Pepe", area: "administracion", contrasena: "pepe" }, {nombre: "Luis", area: "produccion", contrasena: "luis" },
+		 {nombre: "Acosta", area: "compras", contrasena: "acosta" }, {nombre: "Nilson", area: "ventas", contrasena: "nilson" } ]
 
 
 
@@ -131,6 +140,13 @@ const datosArea = areasData[areaEmpresa] || [];
 			  <Route path="detalle-compra" element={<DetalleCompra /> } />
 			  <Route path="detalle-venta" element={<DetalleVenta /> } />
 			  <Route path="compras-realizadas" element={<ComprasRealizadas /> } />
+			  <Route path="/" element={<Layout />}>
+				<Route path="registrar-pedido" element={<RegistrarPedido />} />
+				<Route path="modificar-cliente" element={<ModificarCliente />} />
+				<Route path="listado-pedidos" element={<ListadoPedidos2 />} />
+				<Route path="detalles-pedidos" element={<DetallesPedidos />} />
+				<Route path="detalles-cliente" element={<DetallesCliente />} />
+				</Route>
 
 
 
