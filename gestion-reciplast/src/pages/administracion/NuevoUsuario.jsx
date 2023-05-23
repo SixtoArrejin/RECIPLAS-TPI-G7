@@ -14,7 +14,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { NavLink } from 'react-router-dom';
-import SelectSmall from '../components/SelectSmall';
+import SelectSmall from '../../components/SelectSmall';
 
 function NuevoUsuario() {
     const [productType, setProductType] = useState('');

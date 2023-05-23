@@ -22,13 +22,20 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import Regsitro2 from "./pages/Registro2";
 import { useState, useEffect } from "react";
-import Compras from "./pages/Compras";
-import NuevoUsuario from "./pages/NuevoUsuario";
-import Ventas from "./pages/Ventas";
+import Compras from "./pages/administracion/Compras";
+import NuevoUsuario from "./pages/administracion/NuevoUsuario";
 import Registro2 from "./pages/Registro2";
 import Prueba from "./pages/Prueba";
 import Modals from "./components/Modal";
-
+import Clientes
+from "./pages/administracion/Clientes";
+import Proveedores from "./pages/administracion/Proveedores";
+import ClientesDeudores from "./pages/administracion/ClientesDeudores";
+import DetalleCompra from "./pages/administracion/DetalleCompra";
+import DetalleVenta from "./pages/administracion/DetalleVenta";
+import RegisterProductPage from "./pages/administracion/RegisterProductPage";
+import Hector from "./pages/administracion/RegisterProductPage";
+import Ventas from "./pages/administracion/Ventas";
 
 
 
@@ -38,14 +45,17 @@ const areasData = {
               { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon /> },
               { nombre: 'Pedidos', link: "pedidos", sub: true, icon: <HomeOutlinedIcon /> }] , 
 			  
-	administracion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-              { nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
-			  { nombre: 'Productos fabricados', link: "productos-fabricados", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
-			  																									{nombre: "Agregar", link: "registrar-producto" } ]},
-			  { nombre: 'Compras', link: "compras", sub: true, icon: <HomeOutlinedIcon /> },
-			  { nombre: 'Ventas', link: "ventas", sub: true, icon: <HomeOutlinedIcon /> },
-			  { nombre: 'Usuarios', link: "productos-fabricados", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Usuario", link: "listado-usuario" }, 
-			  																													{nombre: "Agregar", link: "nuevo-usuario" } ]} ]
+	administracion: [{  nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+					{ nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <HomeOutlinedIcon /> },
+					{ nombre: 'Productos fabricados', link: "productos-fabricados", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "stock" }, 
+																														{nombre: "Agregar", link: "registrar-producto" } ]},
+					{ nombre: 'Compras', link: "compras", sub: true, icon: <HomeOutlinedIcon /> },
+					{ nombre: 'Ventas', link: "ventas", sub: true, icon: <HomeOutlinedIcon /> },
+					{ nombre: 'Usuarios', link: "productos-fabricados", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Usuario", link: "listado-usuario" }, 
+																																		{nombre: "Agregar", link: "nuevo-usuario" } ]},
+				{ nombre: 'Clientes', link: "clientes", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Clientes", link: "clientes" }, 
+				{nombre: "Deudores", link: "deudores" } ] },
+				{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },]
 			  
 }
   
@@ -107,10 +117,20 @@ const datosArea = areasData[areaEmpresa] || [];
 			  <Route path="productos-fabricados" element={<ProductosFabricados />} />
 			  <Route path="pedidos" element={<Pedidos />} />
 			  <Route path="/" element={<Home />} />
-			  <Route path="registrar-producto" element={<ProductosFabricados/>} />
+			  <Route path="modificar-stock-producto" element={<ProductosFabricados/>} />
+			  <Route path="registrar-producto" element={<RegisterProductPage /> } />
 			  <Route path="compras" element={<Compras /> } />
 			  <Route path="nuevo-usuario" element={<NuevoUsuario /> } />
 			  <Route path="ventas" element={<Ventas /> } />
+			  <Route path="clientes" element={<Clientes /> } />
+			  <Route path="proveedores" element={<Proveedores /> } />
+			  <Route path="deudores" element={<ClientesDeudores /> } />
+			  <Route path="detalle-compra" element={<DetalleCompra /> } />
+			  <Route path="detalle-venta" element={<DetalleVenta /> } />
+
+
+
+
 			</Route>
 		  </Routes>
 		</div>

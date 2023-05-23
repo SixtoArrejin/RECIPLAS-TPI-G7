@@ -1,7 +1,7 @@
 
 import { Grid, Typography, Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import TablaVentas from "../components/TablaVentas";
+import TablaVentas from "../../components/TablaVentas";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function Ventas() {
