@@ -18,12 +18,13 @@ import Modal from "react-overlays/Modal";
 import { useState } from 'react';
 import "../Modal.css";
 
-function createData(name, id, fecha, total) {
+function createData(descripcion, id, fecha, total, proveedor) {
   return {
-    name,
+    descripcion,
     id,
     fecha,
     total,
+    proveedor,
     history: [
       {
         name: 'Botella',
@@ -59,12 +60,12 @@ function Row(props) {
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-        <TableCell component="th" scope="row">
+        <TableCell component="th" scope="row" align="center" >
           {row.fecha}
         </TableCell>
-        <TableCell align="right">{row.id}</TableCell>
-        <TableCell align="right">{row.name}</TableCell>
-        <TableCell align="right">{row.total}</TableCell>
+        <TableCell align="center">{row.id}</TableCell>
+        <TableCell align="center">{row.proveedor}</TableCell>
+        <TableCell align="center">{row.total}</TableCell>
         <TableCell align="center">
           <IconButton
             aria-label="expand row"
@@ -81,10 +82,8 @@ function Row(props) {
 
             {/* Detalle de cada fila */}
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h5" gutterBottom component="div">
-                Detalle de compra
-              </Typography>
-              <Typography variant="h6" color="initial">Proveedor: PlastiPro Supply</Typography>
+              
+              <p><strong>Descripcion:</strong> {row.descripcion}</p>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
@@ -92,17 +91,17 @@ function Row(props) {
                     <TableCell align="center">Descripcion</TableCell>
                     <TableCell align="center">P/U</TableCell>
                     <TableCell align="center">Cantidad</TableCell>
-                    <TableCell align="center">Total price ($)</TableCell>
+                    <TableCell align="center">Total ($)</TableCell>
 
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map((historyRow) => (
                     <TableRow key={historyRow.name}>
-                      <TableCell component="th" scope="row" align="center">
+                      <TableCell component="th" scope="row" align="left">
                         {historyRow.name}
                       </TableCell>
-                      <TableCell align="center">
+                      <TableCell align="left">
                         {historyRow.descripcion}
                       </TableCell>
                       <TableCell align="center">{historyRow.pu}</TableCell>
@@ -175,12 +174,12 @@ function Row(props) {
 
 
 const rows = [
-  createData('Polietileno de baja densidad (PEBD)', 9999, "02/03/2023", 2400),
-  createData('Compras para administación', 237, "15/03/2023", 2374),
-  createData('Utiles para área ventas', 3465, "15/03/2023", 6543),
-  createData('Polietileno tereftalato (PET)', 235677, "15/03/2023", 3600),
-  createData('Poliestireno (PS)', 6587, "15/03/2023", 5000),
-  createData('Polietileno tereftalato (PET)', 95238, "15/03/2023", 2463),
+  createData('Polietileno de baja densidad (PEBD)', 9999, "02/03/2023", 2400, "proveedor"),
+  createData('Compras para administación', 237, "15/03/2023", 2374, "proveedor"),
+  createData('Utiles para área ventas', 3465, "15/03/2023", 6543, "proveedor"),
+  createData('Polietileno tereftalato (PET)', 235677, "15/03/2023", 3600, "proveedor"),
+  createData('Poliestireno (PS)', 6587, "15/03/2023", 5000, "Rocco"),
+  createData('Polietileno tereftalato (PET)', 95238, "15/03/2023", 2463, "proveedor"),
 ];
 
 export default function TablaCompras() {
@@ -191,10 +190,10 @@ export default function TablaCompras() {
           <TableHead>
             <TableRow>
 
-              <TableCell align="left"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
-              <TableCell align="right"><Typography variant="h6" color="initial">ID</Typography></TableCell>
-              <TableCell align="right"><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
-              <TableCell align="right"><Typography variant="h6" color="initial">Total</Typography></TableCell>
+              <TableCell align="center"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
+              <TableCell align="center"><Typography variant="h6" color="initial">ID</Typography></TableCell>
+              <TableCell align="center"><Typography variant="h6" color="initial">Proveedor</Typography></TableCell>
+              <TableCell align="center"><Typography variant="h6" color="initial">Total</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Detalles</Typography></TableCell>
 
             </TableRow>
