@@ -5,9 +5,9 @@ import Navegacion from "./components/Navegacion";
 import TablaCompleta from "./components/TablaCompleta";
 import { Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
-import { BrowserRouter,  Navigate } from 'react-router-dom';
-import  Layout  from "./pages/Layout";
-import  Home  from "./pages/Home";
+import { BrowserRouter, Navigate } from 'react-router-dom';
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
 import ListadoMP from "./pages/ListadoMP";
 import ProductosFabricados from "./pages/ProductosFabricados";
 import Pedidos from "./pages/Pedidos";
@@ -28,7 +28,7 @@ import Registro2 from "./pages/Registro2";
 import Prueba from "./pages/Prueba";
 import Modals from "./components/Modal";
 import Clientes
-from "./pages/administracion/Clientes";
+  from "./pages/administracion/Clientes";
 import Proveedores from "./pages/administracion/Proveedores";
 import ClientesDeudores from "./pages/administracion/ClientesDeudores";
 import DetalleCompra from "./pages/administracion/DetalleCompra";
@@ -79,11 +79,11 @@ const areasData = {
 			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,]
 			  
 }
-  
 
 
-const usuarios= [ {nombre: "Pepe", area: "administracion", contrasena: "pepe" }, {nombre: "Luis", area: "produccion", contrasena: "luis" },
-		 {nombre: "Acosta", area: "compras", contrasena: "acosta" }, {nombre: "Nilson", area: "ventas", contrasena: "nilson" } ]
+
+const usuarios = [{ nombre: "Pepe", area: "administracion", contrasena: "pepe" }, { nombre: "Luis", area: "produccion", contrasena: "luis" },
+{ nombre: "Acosta", area: "compras", contrasena: "acosta" }, { nombre: "Nilson", area: "ventas", contrasena: "nilson" }]
 
 
 
@@ -93,44 +93,44 @@ function App() {
 
 
 
-	const [isLoggedIn, setIsLoggedIn] = useState(() => {
-		const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
-		return storedLoggedInStatus === 'true';
-	  });
-	
-	  useEffect(() => {
-		localStorage.setItem('isLoggedIn', isLoggedIn.toString());
-	  }, [isLoggedIn]);
-	
-	  const handleLogin = () => {
-		setIsLoggedIn(true);
-	  };
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
+    return storedLoggedInStatus === 'true';
+  });
 
-	const [areaEmpresa, setAreaEmpresa] = useState(() => {
-		const storedArea = localStorage.getItem('areaEmpresa');
-		return storedArea || '';
-	  });
+  useEffect(() => {
+    localStorage.setItem('isLoggedIn', isLoggedIn.toString());
+  }, [isLoggedIn]);
 
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
 
-	  useEffect(() => {
-		localStorage.setItem('areaEmpresa', areaEmpresa);
-	  }, [areaEmpresa]);
+  const [areaEmpresa, setAreaEmpresa] = useState(() => {
+    const storedArea = localStorage.getItem('areaEmpresa');
+    return storedArea || '';
+  });
 
 
-	const handleArea = (usuarioArea) => {
-		setAreaEmpresa(usuarioArea);
-	  };
+  useEffect(() => {
+    localStorage.setItem('areaEmpresa', areaEmpresa);
+  }, [areaEmpresa]);
 
 
-const datosArea = areasData[areaEmpresa] || [];
+  const handleArea = (usuarioArea) => {
+    setAreaEmpresa(usuarioArea);
+  };
 
 
-	return (
-		<div>
-		  <Routes>
-			{!isLoggedIn && <Route path="/" element={<Navigate to="/login" replace />} />}
-			
-			<Route path="login" element={<Registro2 accion={handleLogin}  usuarios= {usuarios} handleArea={handleArea} />} />
+  const datosArea = areasData[areaEmpresa] || [];
+
+
+  return (
+    <div>
+      <Routes>
+        {!isLoggedIn && <Route path="/" element={<Navigate to="/login" replace />} />}
+
+        <Route path="login" element={<Registro2 accion={handleLogin} usuarios={usuarios} handleArea={handleArea} />} />
 
 			<Route path="/" element={<Layout area={areaEmpresa} data={datosArea} accion={setIsLoggedIn} />}>
 			  {/* Rutas protegidas */}
@@ -160,10 +160,10 @@ const datosArea = areasData[areaEmpresa] || [];
 
 
 
-			</Route>
-		  </Routes>
-		</div>
-	  );
-	}
-	
-	export default App;
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
