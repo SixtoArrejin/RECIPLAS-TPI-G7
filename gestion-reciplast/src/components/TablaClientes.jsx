@@ -58,6 +58,13 @@ function Row(props) {
                 <TableCell align="center">{row.fecha}</TableCell>
                 <TableCell align="center">{row.compras}</TableCell>
                 <TableCell align="center">
+                    <NavLink to="/detalles-cliente">
+                        <button  className='Button'>
+                            Detalle
+                        </button></NavLink>
+                </TableCell>
+
+                <TableCell align="center">
                     <IconButton
                         aria-label="expand row"
                         size="small"
@@ -97,10 +104,10 @@ function Row(props) {
                                                 {historyRow.total}
                                             </TableCell>
                                             <TableCell align="center">
-                                            <NavLink to="/detalle-venta">
-                                                <Button variant="outlined" size="medium">
-                                                    Detalle
-                                                </Button></NavLink>
+                                                <NavLink to="/detalle-venta">
+                                                    <button  className='Button'>
+                                                        Detalle
+                                                    </button></NavLink>
                                             </TableCell>
 
                                         </TableRow>
@@ -118,12 +125,12 @@ function Row(props) {
 
 
 const rows = [
-    createData( 123, 'Jorge Gonzalez', "02/05/2023", 99, "Particular"),
-    createData( 234, 'Plasticor', "17/06/2023", 2, "Empresa"),
-    createData( 345, 'Sixto Arrejin', "01/06/2023", 91, "Particular"),
-    createData( 456, 'Tobias Maciel Meister', "17/06/2023", 2, "Particular"),
-    createData( 567, 'Xtreme', "17/06/2023", 2, "Empresa"),
-    createData( 678, 'Nilson', "19/06/2023", 99, "Particular"),
+    createData(123, 'Jorge Gonzalez', "02/05/2023", 99, "Particular"),
+    createData(234, 'Plasticor', "17/06/2023", 2, "Empresa"),
+    createData(345, 'Sixto Arrejin', "01/06/2023", 91, "Particular"),
+    createData(456, 'Tobias Maciel Meister', "17/06/2023", 2, "Particular"),
+    createData(567, 'Xtreme', "17/06/2023", 2, "Empresa"),
+    createData(678, 'Nilson', "19/06/2023", 99, "Particular"),
 ];
 
 export default function TablaClientes() {
@@ -139,6 +146,7 @@ export default function TablaClientes() {
                             <TableCell align="center"><Typography variant="h6" color="initial">Tipo</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Fecha Registro</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Ventas</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial"> </Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial"> </Typography></TableCell>
                         </TableRow>
                     </TableHead>

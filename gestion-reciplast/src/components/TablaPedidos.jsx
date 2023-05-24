@@ -3,6 +3,8 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import "../componentsStyles.css"
+
 const handleDetails = (row) => {
   console.log("Detalles:", row);
 };
@@ -35,13 +37,12 @@ const columns = [
     sortable: false,
     width: 160,
     renderCell: (params) => (
-      <NavLink to="/detalles-pedidos-prod"><Button
-        variant="outlined"
-        color="primary"
+      <NavLink to="/detalles-pedidos-prod"><button
+        className="Button"
         onClick={() => handleDetails(params.row)}
       >
         Detalles
-      </Button></NavLink>
+      </button></NavLink>
     ),
   },
 ];

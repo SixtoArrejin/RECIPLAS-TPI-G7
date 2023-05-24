@@ -15,6 +15,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Grid, TextField, Button, Checkbox } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import "../componentsStyles.css";
 
 function createData(id, name, fecha, compras) {
     return {
@@ -55,6 +56,12 @@ function Row(props) {
                 </TableCell>
                 <TableCell align="center">{row.fecha}</TableCell>
                 <TableCell align="center">{row.compras}</TableCell>
+                <TableCell align="center">
+                    <NavLink to="/detalles-proveedor">
+                        <button  className='Button'>
+                            Detalle
+                        </button></NavLink>
+                </TableCell>
                 <TableCell align="center">
                     <IconButton
                         aria-label="expand row"
@@ -97,9 +104,9 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="center">
                                                 <NavLink to="/detalle-compra">
-                                                <Button variant="outlined" size="medium">
+                                                <button className='Button'>
                                                     Detalle
-                                                </Button></NavLink>
+                                                </button></NavLink>
                                             </TableCell>
                     
 
@@ -142,6 +149,7 @@ export default function TablaProveedores() {
                             <TableCell align="center"><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Fecha Registro</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Compras</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial"> </Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial"> </Typography></TableCell>
                         </TableRow>
                     </TableHead>

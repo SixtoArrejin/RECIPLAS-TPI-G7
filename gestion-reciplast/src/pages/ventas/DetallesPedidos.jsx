@@ -1,4 +1,3 @@
-
 import Navegacion from "../../components/Navegacion";
 import TablaListadoDeProductos from "../../components/TablaListadoDeProductos";
 
@@ -143,24 +142,38 @@ function DatosPedido() {
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
             <Grid item xs={4}>
-              <FechaInput nombre="Fecha de pedido" id="FechaPedido" />
-            </Grid>
-            <Grid item xs={4}>
               <TextField
                 fullWidth
                 disabled
-                id="DNICliente"
-                label="DNI"
-                defaultValue="32000900"
+                id="date"
+                label="Fecha de pedido"
+                type="date"
+                defaultValue={"2017-05-24"}
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
             </Grid>
             <Grid item xs={4}>
               <TextField
                 fullWidth
                 disabled
-                id="DireccionCliente"
-                label="Dirección"
-                defaultValue="Calle Rivadavia 4200"
+                id="Horadepedido"
+                label="Hora de pedido"
+                defaultValue="18:46"
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <TextField
+                fullWidth
+                disabled
+                id="date"
+                label="Fecha de entrega estimada"
+                type="date"
+                defaultValue={"2017-05-29"}
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
             </Grid>
           </Grid>
@@ -185,11 +198,14 @@ function DetallesPedidos() {
   return (
     <>
       <div className="Page">
-        <div style={{ width: "100%", paddingBottom: "30px" }}>
-          <h1 style={{ margin: "0" }}>DETALLES DE PEDIDOS</h1>
-          <Navegacion />
+        <div className="ParteSuperior">
+          <div style={{ padding: "0px 0px 20px 20px" }}>
+            <Navegacion />
+          </div>
+          <h1 style={{ margin: "0" }}>DETALLES DE PEDIDO</h1>
         </div>
         <div className="Caja">
+          <h3 style={{ marginLeft: 5, textAlign: "left" }}>Datos de cliente</h3>
           <Datos />
         </div>
         <div className="Caja">
@@ -211,7 +227,7 @@ function DetallesPedidos() {
             <TextField disabled id="FechaRegistro" defaultValue="11060" />
           </div>
         </div>
-        <div style={{ textAlign: "right", width: "90%" }}>
+        <div style={{ textAlign: "right", width: "85%" }}>
           {" "}
           <button className="Button" onClick={() => setShowModal(true)}>
             CANCELAR

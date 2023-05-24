@@ -46,6 +46,8 @@ import ListadoProductosFabricados from "./pages/ListadoProductosFabricados";
 import ListadoProductosFabricadosAdm from "./pages/administracion/ListadoProductosFabricadosAdm";
 import DetallesPedidosProd from "./pages/DetallesPedidosProd";
 import IngresosMP from "./pages/IngresosMP";
+import DetallesProveedor from "./pages/ventas/DetallesProveedor";
+import ModificarProveedor from "./pages/ventas/ModificarProveedor";
 
 const areasData = {
     produccion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
@@ -160,6 +162,8 @@ function App() {
 				<Route path="detalles-pedidos-prod" element={<DetallesPedidosProd />} />
 				<Route path="detalles-cliente" element={<DetallesCliente />} />
 				<Route path="ingreso-materia-prima" element={<IngresosMP />} />
+				<Route path="detalles-proveedor" element={<DetallesProveedor />} />
+				<Route path="modificar-proveedor" element={<ModificarProveedor />} />
 				
 				
 
