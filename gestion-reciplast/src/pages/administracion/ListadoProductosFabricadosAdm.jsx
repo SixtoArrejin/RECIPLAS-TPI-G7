@@ -1,8 +1,8 @@
 
-import TablaProductosFabricados from "../components/TablaProductosFabricados";
+import TablaProductosFabricadosAdm from "../../components/TablaProductosFabricadosAdm";
 
 import { WidthFull } from "@mui/icons-material";
-import Navegacion from "../components/Navegacion";
+import Navegacion from "../../components/Navegacion";
 import { useNavigate } from "react-router-dom";
 // Componente de la tabla
 import { useState } from "react";
@@ -27,7 +27,6 @@ export default function ListadoProductosFabricados() {
         setShowModal(true);
     };
 
-
     return (
 
         <div className="main-content" style={{ margin: "0", padding: "0", width: "100%" }}>
@@ -42,12 +41,12 @@ export default function ListadoProductosFabricados() {
 
                 <div style={{ marginBottom: "20px", marginLeft: "5%" }} >
 
-                    <h1> LISTADO PRODUCTOS FABRICADOS </h1>
+                    <h1> Listado Productos Fabricados </h1>
                 </div>
 
                 <div style={{ display: "flex", justifyContent: "center", width: "100%", marginBottom: "10%" }}>
-                    <div style={{ width: "75%", }}>
-                        <TablaProductosFabricados />
+                    <div style={{ width: "72%", }}>
+                        <TablaProductosFabricadosAdm />
                         <div
                             style={{
                                 textAlign: "right",

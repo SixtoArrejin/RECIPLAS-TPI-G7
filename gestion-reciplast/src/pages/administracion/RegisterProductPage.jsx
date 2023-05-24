@@ -26,6 +26,10 @@ import { NavLink } from "react-router-dom";
 import Modal from "react-overlays/Modal";
 import "../../Modal.css";
 
+import Navegacion from "../../components/Navegacion";
+import "../../componentsStyles.css";
+import CssBaseline from "@mui/material/CssBaseline";
+
 function RegisterProductPage() {
   const [productType, setProductType] = useState("");
   const [productName, setProductName] = useState("");
@@ -106,147 +110,129 @@ function RegisterProductPage() {
   };
 
   return (
-    <Grid
-      container
-      xs={12}
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      style={{ width: "100%" }}
-    >
-      <style>{styles}</style>
-
-      <Grid item xs={12}>
-        <p>
-          <NavLink to="/home">Home</NavLink> » Stock » Registrar
-        </p>
-      </Grid>
-
-      <Grid
-        container
-        xs={8}
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        border="1px solid black"
-        borderRadius={8}
-        padding={2}
-      >
-        <Grid
-          container
-          xs={12}
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Typography variant="h4" gutterBottom>
-            REGISTRAR PRODUCTO
-          </Typography>
-        </Grid>
-
-        <form onSubmit={handleSubmit}>
-          {/* <label>
-                    Tipo de producto:
-                    <input type="radio" name="productType" value="Materia Prima" checked={productType === 'Materia Prima'} onChange={handleProductTypeChange} />
-                    Materia Prima
-                </label>
-                <label>
-                    <input type="radio" name="productType" value="Fabricación" checked={productType === 'Fabricación'} onChange={handleProductTypeChange} />
-                    Fabricación
-                </label> */}
-          <FormControl>
-            <FormLabel id="demo-form-control-label-placement">
-              Tipo de producto
-            </FormLabel>
-            <RadioGroup
-              row
-              aria-labelledby="demo-form-control-label-placement"
-              name="position"
-              defaultValue="top"
+    <div className="Page">
+      <div className="ParteSuperior">
+        <div style={{ padding: "0px 0px 20px 20px" }}>
+          <Navegacion />
+        </div>
+        <h1 style={{ margin: "0" }}>REGISTRAR PRODUCTOS</h1>
+      </div>
+      <div className="Caja">
+        <CssBaseline />
+        <React.Fragment>
+          <CssBaseline />
+          <div style={{ display: "inline", width: "100%", height: "100%" }}>
+            <div>
+              <h3 style={{ marginLeft: 5, textAlign: "left" }}>
+                Datos de producto
+              </h3>
+            </div>
+            <Box
+              sx={{
+                padding: "20px",
+                width: "100%",
+                minheight: "100%",
+              }}
             >
-              <FormControlLabel
-                value="Materia Prima"
-                control={<Radio />}
-                label="Materia Prima"
-                onChange={handleProductTypeChange}
-              />
-              <FormControlLabel
-                value="Fabricación"
-                control={<Radio />}
-                label="Fabricación"
-                onChange={handleProductTypeChange}
-              />
-            </RadioGroup>
-          </FormControl>
-          <br /> <br />
-          <Grid
-            container
-            xs={12}
-            justifyContent="flex-start"
-            alignItems="center"
-          >
-            <label>
-              <TextField
-                id="outlined-multiline-flexible"
-                label="Nombre del producto"
-                multiline
-                maxRows={4}
-              />
-              {/* <input type="text" value={productName} onChange={handleProductNameChange} placeholder="Nombre del producto" /> */}
-            </label>
-
-            <label style={{ marginLeft: "20%" }}>
-              <Card variant="outlined">
-                <Typography variant="h6" color="gray">
-                  Id: 9999
-                </Typography>
-              </Card>
-            </label>
-          </Grid>
-          <br /> <br />
-          <label>
-            <Grid container xs={12} alignItems="center">
-              <TextField
-                id="outlined-multiline-flexible"
-                label="Descripción del producto"
-                multiline
-                maxRows={4}
-                fullWidth={true}
-              />
-            </Grid>
-
-            {/* <textarea value={productDescription} onChange={handleProductDescriptionChange} /> */}
-          </label>
-          <br />
-          <label>
-            <InputLabel htmlFor="outlined-adornment-amount">Precio</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-amount"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
-              label="Precios"
-              disabled={productType === "Materia Prima"}
-            />
-            {/* Aquí se agrega la propiedad "disabled" para deshabilitar el campo */}
-            {/* <input type="number" value={productPrice} onChange={handleProductPriceChange} disabled={productType === 'Materia Prima'} /> */}
-          </label>
-          <br /> <br /> <br />
-          <label>
-            <MuiFileInput
-              value={file}
-              onChange={handleChange}
-              placeholder="Imagen del producto"
-            />
-            {/* <input type="file" accept="image/*" onChange={handleProductImageChange} /> */}
-          </label>
-          <br /> <br />
-          <Grid
-            container
-            direction="row"
-            justifyContent="space-around"
-            alignItems="center"
-          >
+              <Grid
+                container
+                rowSpacing={2}
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              >
+                <Grid item xs={4}>
+                  <FormControl>
+                    <FormLabel id="demo-form-control-label-placement">
+                      Tipo de producto
+                    </FormLabel>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-form-control-label-placement"
+                      name="position"
+                      defaultValue="top"
+                    >
+                      <FormControlLabel
+                        value="Materia Prima"
+                        control={<Radio />}
+                        label="Materia Prima"
+                        onChange={handleProductTypeChange}
+                      />
+                      <FormControlLabel
+                        value="Fabricación"
+                        control={<Radio />}
+                        label="Fabricación"
+                        onChange={handleProductTypeChange}
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={8}>
+                  <TextField
+                    fullWidth
+                    id="nombreproducto"
+                    label="Nombre de producto"
+                    multiline
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    fullWidth
+                    id="id"
+                    label="ID"
+                    disabled
+                    defaultValue={"9999"}
+                  />
+                </Grid>
+                <Grid item xs={8}>
+                  <TextField
+                    id="descripcion"
+                    label="Descripción del producto"
+                    multiline
+                    maxRows={4}
+                    fullWidth={true}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    id="outlined-number"
+                    type="number"
+                    fullWidth
+                    enable
+                    label="Precio ($)"
+                    defaultValue={""}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    id="outlined-number"
+                    type="number"
+                    fullWidth
+                    enable
+                    label="Cantidad Min (g)"
+                    defaultValue={""}
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <label>
+                    <MuiFileInput
+                      value={file}
+                      onChange={handleChange}
+                      placeholder="Imagen del producto"
+                    />
+                  </label>
+                </Grid>
+              </Grid>
+            </Box>
+          </div>
+        </React.Fragment>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            width: "98%",
+            padding: "20px 0 20px 0",
+          }}
+        >
+          <div style={{ paddingRight: "10px" }}>
             <Button
               variant="contained"
               color="success"
@@ -254,73 +240,73 @@ function RegisterProductPage() {
             >
               Registrar
             </Button>
+          </div>
 
-            <Modal
-              className="modal"
-              show={showModal}
-              onHide={handleClose}
-              renderBackdrop={renderBackdrop}
-            >
-              <div>
-                <div className="modal-header">
-                  <div className="modal-title">Registrar Nuevo Producto</div>
-                  <div>
-                    <span className="close-button" onClick={handleClose}>
-                      x
-                    </span>
-                  </div>
-                </div>
-                <div className="modal-desc">
-                  <p>¿Esta seguro de realizar dicha acción?</p>
-                </div>
-                <div className="modal-footer">
-                  <button className="secondary-button" onClick={handleClose}>
-                    Cancelar
-                  </button>
-                  <button className="primary-button" onClick={handleSuccess}>
-                    Registrar
-                  </button>
+          <Modal
+            className="modal"
+            show={showModal}
+            onHide={handleClose}
+            renderBackdrop={renderBackdrop}
+          >
+            <div>
+              <div className="modal-header">
+                <div className="modal-title">Registrar Nuevo Producto</div>
+                <div>
+                  <span className="close-button" onClick={handleClose}>
+                    x
+                  </span>
                 </div>
               </div>
-            </Modal>
+              <div className="modal-desc">
+                <p>¿Esta seguro de realizar dicha acción?</p>
+              </div>
+              <div className="modal-footer">
+                <button className="secondary-button" onClick={handleClose}>
+                  Cancelar
+                </button>
+                <button className="primary-button" onClick={handleSuccess}>
+                  Registrar
+                </button>
+              </div>
+            </div>
+          </Modal>
 
-            {/* <button type="submit">Registrar</button> */}
-            <Button variant="outlined" onClick={() => setShowModal2(true)}>
-              Cancelar
-            </Button>
-            {/* <button type="button">Cancelar</button> */}
-            <Modal
-              className="modal"
-              show={showModal2}
-              onHide={handleClose2}
-              renderBackdrop={renderBackdrop2}
-            >
-              <div>
-                <div className="modal-header">
-                  <div className="modal-title">Cancelar Registro</div>
-                  <div>
-                    <span className="close-button" onClick={handleClose2}>
-                      x
-                    </span>
-                  </div>
-                </div>
-                <div className="modal-desc">
-                  <p>¿Esta seguro que quiere cancelar el registro?</p>
-                </div>
-                <div className="modal-footer">
-                  <button className="secondary-button" onClick={handleClose2}>
-                    Volver
-                  </button>
-                  <button className="primary-button" onClick={handleSuccess2}>
-                    Aceptar
-                  </button>
+          {/* <button type="submit">Registrar</button> */}
+          <Button variant="outlined" onClick={() => setShowModal2(true)}>
+            Cancelar
+          </Button>
+          {/* <button type="button">Cancelar</button> */}
+          <Modal
+            className="modal"
+            show={showModal2}
+            onHide={handleClose2}
+            renderBackdrop={renderBackdrop2}
+          >
+            <div>
+              <div className="modal-header">
+                <div className="modal-title">Cancelar Registro</div>
+                <div>
+                  <span className="close-button" onClick={handleClose2}>
+                    x
+                  </span>
                 </div>
               </div>
-            </Modal>
-          </Grid>
-        </form>
-      </Grid>
-    </Grid>
+              <div className="modal-desc">
+                <p>¿Esta seguro que quiere cancelar el registro?</p>
+              </div>
+              <div className="modal-footer">
+                <button className="secondary-button" onClick={handleClose2}>
+                  Volver
+                </button>
+                <button className="primary-button" onClick={handleSuccess2}>
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </Modal>
+        </div>
+      </div>
+    </div>
   );
 }
 

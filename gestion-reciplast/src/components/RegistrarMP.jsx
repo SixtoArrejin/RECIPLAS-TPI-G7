@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 
 function RegistrarMP() {
   function eliminarElemento(row) {
-    const id= row.id
+    const id = row.id;
     const nuevaLista = rows.filter((row) => row.id !== id);
     setRows(nuevaLista);
     setTotalPedido((TotalPedido = TotalPedido - row.precio));

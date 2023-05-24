@@ -18,9 +18,9 @@ import Modal from "react-overlays/Modal";
 import { useState } from 'react';
 import "../Modal.css";
 
-function createData(name, id, fecha, total, cliente) {
+function createData(descripcion, id, fecha, total, cliente) {
     return {
-        name,
+        descripcion,
         id,
         fecha,
         total,
@@ -63,12 +63,12 @@ function Row(props) {
                 <TableCell component="th" scope="row">
                     <Checkbox />
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="row" align="center">
                     {row.fecha}
                 </TableCell>
-                <TableCell align="right">{row.id}</TableCell>
-                <TableCell align="right">{row.name}</TableCell>
-                <TableCell align="right">{row.total}</TableCell>
+                <TableCell align="center">{row.id}</TableCell>
+                <TableCell align="center">{row.cliente}</TableCell>
+                <TableCell align="center">{row.total}</TableCell>
                 <TableCell align="center">
                     <IconButton
                         aria-label="expand row"
@@ -85,10 +85,9 @@ function Row(props) {
 
                         {/* Detalle de cada fila */}
                         <Box sx={{ margin: 1 }}>
-                            <Typography variant="h5" gutterBottom component="div">
-                                Detalle de venta
-                            </Typography>
-                            <Typography variant="h6" color="initial">Cliente: {row.cliente}</Typography>
+
+                            <p><strong>Descripcion:</strong> {row.descripcion}</p>
+
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
@@ -187,10 +186,10 @@ export default function TablaVentas() {
                     <TableHead>
                         <TableRow>
                             <TableCell> </TableCell>
-                            <TableCell align="left"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
-                            <TableCell align="right"><Typography variant="h6" color="initial">ID</Typography></TableCell>
-                            <TableCell align="right"><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
-                            <TableCell align="right"><Typography variant="h6" color="initial">Total</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">ID</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Cliente</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Total</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Detalles</Typography></TableCell>
                         </TableRow>
                     </TableHead>

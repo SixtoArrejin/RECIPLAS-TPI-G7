@@ -13,10 +13,11 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Grid, TextField, Button } from '@mui/material';
+import { Grid, TextField, Button, Checkbox } from '@mui/material';
 import Modal from "react-overlays/Modal";
 import { useState } from 'react';
 import "../Modal.css";
+import "../componentsStyles.css";
 
 function createData(descripcion, id, fecha, total, proveedor) {
   return {
@@ -60,6 +61,9 @@ function Row(props) {
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+        <TableCell component="th" scope="row">
+          <Checkbox />
+        </TableCell>
         <TableCell component="th" scope="row" align="center" >
           {row.fecha}
         </TableCell>
@@ -82,15 +86,15 @@ function Row(props) {
 
             {/* Detalle de cada fila */}
             <Box sx={{ margin: 1 }}>
-              
+
               <p><strong>Descripcion:</strong> {row.descripcion}</p>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
                     <TableCell align="center">Producto</TableCell>
                     <TableCell align="center">Descripcion</TableCell>
-                    <TableCell align="center">P/U</TableCell>
-                    <TableCell align="center">Cantidad</TableCell>
+                    <TableCell align="center">Precio por kg</TableCell>
+                    <TableCell align="center">Cantidad (kg)</TableCell>
                     <TableCell align="center">Total ($)</TableCell>
 
                   </TableRow>
@@ -101,7 +105,7 @@ function Row(props) {
                       <TableCell component="th" scope="row" align="left">
                         {historyRow.name}
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell align="center">
                         {historyRow.descripcion}
                       </TableCell>
                       <TableCell align="center">{historyRow.pu}</TableCell>
@@ -120,7 +124,7 @@ function Row(props) {
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="center">
-                <Button variant="outlined" onClick={() => setShowModal(true)}>Imprimir</Button>
+                <button className='Button' onClick={() => setShowModal(true)}>Imprimir</button>
               </Grid>
               {/* <div>
                 <button type="button" onClick={() => setShowModal(true)}>
@@ -189,7 +193,7 @@ export default function TablaCompras() {
         <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
-
+            <TableCell ><Typography variant="h6" color="initial"> </Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">ID</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Proveedor</Typography></TableCell>

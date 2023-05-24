@@ -1,8 +1,10 @@
-import * as React from 'react';
-import { Grid, Typography } from '@mui/material';
-import TablaCompras from '../../components/TablaCompras';
-import { useState } from 'react';
-import Navegacion from '../../components/Navegacion';
+import * as React from "react";
+import { Grid, Typography, Button } from "@mui/material";
+import TablaCompras from "../../components/TablaCompras";
+import { useState } from "react";
+import Navegacion from "../../components/Navegacion";
+import CssBaseline from "@mui/material/CssBaseline";
+import Modal from "react-overlays/Modal";
 
 function Buscador({ searchTerm, onSearchTermChange }) {
   return (
@@ -16,41 +18,75 @@ function Buscador({ searchTerm, onSearchTermChange }) {
 }
 
 export default function ComprasRealizadas() {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
+  // Backdrop JSX code
+  const renderBackdrop = (props) => <div className="backdrop" {...props} />;
+
+  var handleClose = () => setShowModal(false);
+
+  var handleSuccess = () => {
+    console.log("success");
+  };
+
+  const handlePrint = () => {
+    setShowModal(true);
+  };
 
   return (
-    <div className="main-content" style={{ margin: "0", padding: "0", width: "100%" }}>
-      <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-
-
-
-        <div style={{ marginBottom: "20px", marginLeft: "10%", marginTop: "30px" }} >
+    <div className="Page">
+      <div className="ParteSuperior">
+        <div style={{ padding: "0px 0px 20px 20px" }}>
           <Navegacion />
         </div>
+        <h1 style={{ margin: "0" }}>COMPRAS REALIZADAS</h1>
+      </div>
+      <div className="Caja">
+        <CssBaseline />
+        <Buscador searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
+        <TablaCompras />
+        <div
+          style={{
+            textAlign: "right",
+            width: "100%",
+            padding: "20px 0 20px 0",
+          }}
+        >
+          <Modal
+            className="modal"
+            show={showModal}
+            onHide={handleClose}
+            renderBackdrop={renderBackdrop}
+          >
+            <div>
+              <div className="modal-header">
+                <div>
+                  <span className="close-button" onClick={handleClose}>
+                    x
+                  </span>
+                </div>
+              </div>
+              <div className="modal-desc">
+                <p>¿Seguro desea imprimir?</p>
+              </div>
+              <div className="modal-footer">
+                <button className="secondary-button" onClick={handleClose}>
+                  Cancelar
+                </button>
+                <button className="primary-button" onClick={handleSuccess}>
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </Modal>
 
-
-        <div style={{ marginBottom: "20px", marginLeft: "5%" }} >
-
-          <h1> Compras Realizadas </h1>
+          <Button variant="outlined" onClick={handlePrint}>
+            Imprimir
+          </Button>
         </div>
-
-        <div style={{ paddingBottom: '50px', paddingLeft: "15%" }}>
-          <Buscador searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
-        </div>
-
-        <div style={{ display: "flex", justifyContent: "center", width: "100%", marginBottom: "10%" }}>
-          <div style={{ width: "72%", }}>
-            <TablaCompras />
-          </div>
-        </div>
-
-
       </div>
     </div>
-
-
-
-
   );
 }
