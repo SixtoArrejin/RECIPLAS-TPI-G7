@@ -43,6 +43,8 @@ import ModificarCliente from "./pages/ventas/ModificarCliente";
 import RegistrarPedido from "./pages/ventas/RegistrarPedido";
 import ListadoPedidos2 from "./pages/ventas/ListadoPedidos2";
 import ListadoProductosFabricados from "./pages/ListadoProductosFabricados";
+import IngresoMP from "./pages/IngresoMP";
+import AgregarCliente from "./pages/compras/AgregarCliente";
 
 
 const areasData = {
@@ -135,7 +137,7 @@ function App() {
 			<Route path="/" element={<Layout area={areaEmpresa} data={datosArea} accion={setIsLoggedIn} />}>
 			  {/* Rutas protegidas */}
 			  <Route path="materias-primas/listado" element={<ListadoMP />} />
-			  <Route path="materias-primas/agregar" element={<Modals />} />
+			  <Route path="materias-primas/agregar" element={<IngresoMP />} />
 			  <Route path="productos-fabricados" element={<ListadoProductosFabricados />} />
 			  <Route path="pedidos" element={<Pedidos />} />
 			  <Route path="/" element={<Home />} />
@@ -155,6 +157,7 @@ function App() {
 				<Route path="listado-pedidos" element={<ListadoPedidos2 />} />
 				<Route path="detalles-pedidos" element={<DetallesPedidos />} />
 				<Route path="detalles-cliente" element={<DetallesCliente />} />
+				<Route path="listado-usuario" element={<AgregarCliente />} />
 				
 
 
