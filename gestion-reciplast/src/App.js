@@ -60,21 +60,23 @@ import AgregarProveedor from "./pages/compras/AgregarProveedor";
 import Usuarios from "./pages/administracion/Usuarios";
 import DetalleUsuario from "./pages/administracion/DetalleUsuario";
 import ModificarUsuario from "./pages/administracion/ModificarUsuario";
+import ModificarPedido from "./pages/ventas/ModificarPedido";
+
+
+import ViewListIcon from '@mui/icons-material/ViewList';
 
 const areasData = {
     produccion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
               { nombre: 'Materias Primas', link: "materias-primas/agregar", sub: false, icon: <RecyclingIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "ingreso-materia-prima" } ]} ,
               { nombre: 'Productos Fabricados', link: "productos-fabricados", sub: true, icon: <InventoryIcon /> },
-              { nombre: 'Pedidos', link: "listado-pedidos", sub: true, icon: <ReorderIcon /> }] , 
+              { nombre: 'Pedidos', link: "listado-pedidos", sub: true, icon: <ViewListIcon /> }] , 
 
 	ventas: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-			  { nombre: 'Clientes', link: "", sub: false, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Pedidos Clientes", link: "listado-pedidos" }, 
+			  { nombre: 'Clientes', link: "clientes", sub: true, icon: <ContactsOutlinedIcon />, submenus: [ {nombre: "Pedidos Clientes", link: "listado-pedidos" }, 
 																								  {nombre: "Ver Clientes", link: "clientes" } ]} ,
-																								  { nombre: 'Proveedores', link: "proveedores", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Pedidos', link: "registrar-pedido", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Modificar Cliente', link: "modificar-cliente", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Detalles pedido', link: "detalles-pedidos", sub: true, icon: <HomeOutlinedIcon /> }, 
-			{ nombre: 'Detalles cliente', link: "detalles-cliente", sub: true, icon: <HomeOutlinedIcon /> },],
+			{ nombre: 'Proveedores', link: "proveedores", sub: true, icon: <TransferWithinAStationIcon /> },
+			{ nombre: 'Pedidos', link: "registrar-pedido", sub: false, icon: <ViewListIcon /> ,  submenus: [ {nombre: "Ver pedidos", link: "listado-pedidos" }, 
+																												{nombre: "Agregar pedido", link: "registrar-pedido" } ] }, ],
 			  
 	administracion: [{  nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
 					{ nombre: 'Materia Prima', link: "materias-primas/listado", sub: true, icon: <RecyclingIcon /> },
@@ -106,8 +108,6 @@ const usuarios = [{ nombre: "Pepe", area: "administracion", contrasena: "pepe" }
 
 function App() {
 	document.title = 'Gestion Reciplast';
-
-
 
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
@@ -181,7 +181,7 @@ function App() {
 				<Route path="listado-usuario" element={<Usuarios />} />
 				<Route path="detalle-usuario" element={<DetalleUsuario />} />
 				<Route path="modificar-usuario" element={<ModificarUsuario />} />
-				
+				<Route path="modificar-pedido" element={<ModificarPedido />} />
 
 
 

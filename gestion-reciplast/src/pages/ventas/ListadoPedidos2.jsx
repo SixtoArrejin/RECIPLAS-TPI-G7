@@ -3,6 +3,7 @@ import Navegacion from "../../components/Navegacion";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useState } from "react";
 import Modal from "react-overlays/Modal";
+import TablaPedidosNew from "../../components/TablaPedidosNew";
 
 function ListadoPedidos() {
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +32,7 @@ function ListadoPedidos() {
         </div>
         <div className="Caja" style={{ position: "sticky" }}>
           <CssBaseline />
-          <TablaPedidos />
+          <TablaPedidosNew />
           <div
             style={{
               textAlign: "right",

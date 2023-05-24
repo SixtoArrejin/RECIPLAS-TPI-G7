@@ -84,7 +84,7 @@ export default function ComprasRealizadas() {
           </Modal>
 
           <button className="Button" onClick={handlePrint}>
-            IMPRIMIR
+            REGISTRAR PAGO
           </button>
         </div>
       </div>
