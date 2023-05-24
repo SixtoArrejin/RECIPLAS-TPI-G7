@@ -55,6 +55,11 @@ import SellIcon from '@mui/icons-material/Sell';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import ListadoPedidos from "./pages/ventas/ListadoPedidos2";
+import AgregarCliente from "./pages/compras/AgregarCliente";
+import AgregarProveedor from "./pages/compras/AgregarProveedor";
+import Usuarios from "./pages/administracion/Usuarios";
+import DetalleUsuario from "./pages/administracion/DetalleUsuario";
+import ModificarUsuario from "./pages/administracion/ModificarUsuario";
 
 const areasData = {
     produccion: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
@@ -87,7 +92,7 @@ const areasData = {
 
 
 	compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
-			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <HomeOutlinedIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,]
+			{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <ShoppingCartIcon />, submenus: [ {nombre: "Ver Stock", link: "materias-primas/listado" }, {nombre: "Agregar", link: "materias-primas/agregar" } ]} ,]
 			  
 }
 
@@ -171,7 +176,11 @@ function App() {
 				<Route path="ingreso-materia-prima" element={<IngresosMP />} />
 				<Route path="detalles-proveedor" element={<DetallesProveedor />} />
 				<Route path="modificar-proveedor" element={<ModificarProveedor />} />
-				
+				<Route path="agregar-proveedor" element={<AgregarProveedor />} />
+				<Route path="agregar-cliente" element={<AgregarCliente />} />
+				<Route path="listado-usuario" element={<Usuarios />} />
+				<Route path="detalle-usuario" element={<DetalleUsuario />} />
+				<Route path="modificar-usuario" element={<ModificarUsuario />} />
 				
 
 
