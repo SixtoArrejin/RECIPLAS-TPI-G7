@@ -14,18 +14,22 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Grid, TextField, Button, Checkbox } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
-function createData(name, fecha, compras) {
+function createData(name, fecha, compras, tipo) {
     return {
         name,
         fecha,
         compras,
+        tipo,
         history: [
             {
+                fecha: "02/05/2023",
                 id: 2345,
                 total: 3587,
             },
             {
+                fecha: "10/06/2023",
                 id: 3452,
                 total: 3453,
             },
@@ -40,14 +44,15 @@ function Row(props) {
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="row" >
                     <Checkbox />
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="row" align="center">
                     {row.name}
                 </TableCell>
-                <TableCell align="right">{row.fecha}</TableCell>
-                <TableCell align="right">{row.compras}</TableCell>
+                <TableCell align="center">{row.tipo}</TableCell>
+                <TableCell align="center">{row.fecha}</TableCell>
+                <TableCell align="center">{row.compras}</TableCell>
                 <TableCell align="center">
                     <IconButton
                         aria-label="expand row"
@@ -70,14 +75,17 @@ function Row(props) {
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
+                                        <TableCell align="center">Fecha</TableCell>
                                         <TableCell align="center">Id</TableCell>
                                         <TableCell align="center">Total ($)</TableCell>
-                                        <TableCell align="center"> </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {row.history.map((historyRow) => (
                                         <TableRow key={historyRow.id}>
+                                            <TableCell component="th" scope="row" align="center">
+                                                {historyRow.fecha}
+                                            </TableCell>
                                             <TableCell component="th" scope="row" align="center">
                                                 {historyRow.id}
                                             </TableCell>
@@ -85,9 +93,10 @@ function Row(props) {
                                                 {historyRow.total}
                                             </TableCell>
                                             <TableCell align="center">
+                                            <NavLink to="/detalle-venta">
                                                 <Button variant="outlined" size="medium">
                                                     Detalle
-                                                </Button>
+                                                </Button></NavLink>
                                             </TableCell>
 
                                         </TableRow>
@@ -105,10 +114,12 @@ function Row(props) {
 
 
 const rows = [
-    createData('Jorge Gonzalez', "02/05/2023", 99),
-    createData('Sixto Arrejin', "01/06/2023", 91),
-    createData('Tobias Maciel Meister', "17/06/2023", 2),
-    createData('Nilson', "19/06/2023", 99),
+    createData('Jorge Gonzalez', "02/05/2023", 99, "Particular"),
+    createData('Plasticor', "17/06/2023", 2, "Empresa"),
+    createData('Sixto Arrejin', "01/06/2023", 91, "Particular"),
+    createData('Tobias Maciel Meister', "17/06/2023", 2, "Particular"),
+    createData('Xtreme', "17/06/2023", 2, "Empresa"),
+    createData('Nilson', "19/06/2023", 99, "Particular"),
 ];
 
 export default function TablaClientes() {
@@ -119,9 +130,10 @@ export default function TablaClientes() {
                     <TableHead>
                         <TableRow>
                             <TableCell> </TableCell>
-                            <TableCell><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
-                            <TableCell align="right"><Typography variant="h6" color="initial">Fecha Registro</Typography></TableCell>
-                            <TableCell align="right"><Typography variant="h6" color="initial">Ventas</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Nombre</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Tipo</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Fecha Registro</Typography></TableCell>
+                            <TableCell align="center"><Typography variant="h6" color="initial">Ventas</Typography></TableCell>
                             <TableCell align="center"><Typography variant="h6" color="initial">Ver ventas</Typography></TableCell>
                         </TableRow>
                     </TableHead>

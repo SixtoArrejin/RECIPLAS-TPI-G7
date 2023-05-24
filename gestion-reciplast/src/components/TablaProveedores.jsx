@@ -14,6 +14,7 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Grid, TextField, Button, Checkbox } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 function createData(name, fecha, compras) {
     return {
@@ -22,10 +23,12 @@ function createData(name, fecha, compras) {
         compras,
         history: [
             {
+                fecha: "07/03/2023",
                 id: 2345,
                 total: 3587,
             },
             {
+                fecha: "08/04/2023",
                 id: 3452,
                 total: 3453,
             },
@@ -70,14 +73,18 @@ function Row(props) {
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
+                                        <TableCell align="center">Fecha</TableCell>
                                         <TableCell align="center">Id</TableCell>
                                         <TableCell align="center">Total ($)</TableCell>
-                                        <TableCell align="center"> </TableCell>
+
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {row.history.map((historyRow) => (
                                         <TableRow key={historyRow.id}>
+                                            <TableCell component="th" scope="row" align="center">
+                                                {historyRow.fecha}
+                                            </TableCell>
                                             <TableCell component="th" scope="row" align="center">
                                                 {historyRow.id}
                                             </TableCell>
@@ -85,10 +92,12 @@ function Row(props) {
                                                 {historyRow.total}
                                             </TableCell>
                                             <TableCell align="center">
+                                                <NavLink to="/detalle-compra">
                                                 <Button variant="outlined" size="medium">
                                                     Detalle
-                                                </Button>
+                                                </Button></NavLink>
                                             </TableCell>
+                    
 
                                         </TableRow>
                                     ))}
@@ -115,7 +124,7 @@ const rows = [
     createData('Carolina Soto', '07/06/2023', 88),
     createData('Pedro Martínez', '15/06/2023', 69),
     createData('Sofía Rodríguez', '20/06/2023', 95)
-    ];
+];
 
 export default function TablaProveedores() {
     return (

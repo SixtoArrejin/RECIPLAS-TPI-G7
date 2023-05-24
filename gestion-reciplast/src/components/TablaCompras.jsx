@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Grid, TextField, Button } from '@mui/material';
+import { Grid, TextField, Button, Checkbox } from '@mui/material';
 import Modal from "react-overlays/Modal";
 import { useState } from 'react';
 import "../Modal.css";
@@ -60,6 +60,9 @@ function Row(props) {
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+        <TableCell component="th" scope="row">
+          <Checkbox />
+        </TableCell>
         <TableCell component="th" scope="row" align="center" >
           {row.fecha}
         </TableCell>
@@ -82,7 +85,7 @@ function Row(props) {
 
             {/* Detalle de cada fila */}
             <Box sx={{ margin: 1 }}>
-              
+
               <p><strong>Descripcion:</strong> {row.descripcion}</p>
               <Table size="small" aria-label="purchases">
                 <TableHead>
@@ -101,7 +104,7 @@ function Row(props) {
                       <TableCell component="th" scope="row" align="left">
                         {historyRow.name}
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell align="center">
                         {historyRow.descripcion}
                       </TableCell>
                       <TableCell align="center">{historyRow.pu}</TableCell>
@@ -189,7 +192,7 @@ export default function TablaCompras() {
         <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
-
+            <TableCell ><Typography variant="h6" color="initial"> </Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Fecha</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">ID</Typography></TableCell>
               <TableCell align="center"><Typography variant="h6" color="initial">Proveedor</Typography></TableCell>
