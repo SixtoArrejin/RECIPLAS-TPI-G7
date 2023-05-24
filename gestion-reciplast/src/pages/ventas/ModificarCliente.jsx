@@ -8,6 +8,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { NavLink } from "react-router-dom";
 
 function Datos() {
   return (
@@ -177,9 +178,11 @@ function ModificarCliente() {
                   <button className="secondary-button" onClick={handleClose}>
                     Cancelar
                   </button>
-                  <button className="primary-button" onClick={handleSuccess}>
-                    Aceptar
-                  </button>
+                  <NavLink to="/detalles-cliente">
+                    <button className="primary-button" onClick={handleSuccess}>
+                      Aceptar
+                    </button>
+                  </NavLink>
                 </div>
               </div>
             </Modal>
@@ -205,9 +208,11 @@ function ModificarCliente() {
                   <button className="secondary-button" onClick={handleClose2}>
                     Cancelar
                   </button>
-                  <button className="primary-button" onClick={handleSuccess2}>
-                    Aceptar
-                  </button>
+                  <NavLink to="/detalles-cliente">
+                    <button className="primary-button" onClick={handleSuccess2}>
+                      Aceptar
+                    </button>
+                  </NavLink>
                 </div>
               </div>
             </Modal>

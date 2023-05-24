@@ -107,6 +107,7 @@ const areasData = {
 
 
 	compras: [{ nombre: 'Home', link: "/", sub: true, icon: <HomeOutlinedIcon /> },
+	{ nombre: 'Stock Materias Primas', link: "materias-primas/listado", sub: true, icon: <RecyclingIcon /> },
 	{ nombre: 'Compras Realizadas', link: "compras-realizadas", sub: true, icon: <ShoppingCartIcon />, submenus: [{ nombre: "Ver Stock", link: "materias-primas/listado" }, { nombre: "Agregar", link: "materias-primas/agregar" }] },]
 
 }

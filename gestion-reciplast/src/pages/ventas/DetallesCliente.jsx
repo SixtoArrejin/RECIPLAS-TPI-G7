@@ -167,9 +167,11 @@ function DetallesCliente() {
                   <button className="secondary-button" onClick={handleClose}>
                     Cancelar
                   </button>
-                  <button className="primary-button" onClick={handleSuccess}>
-                    Aceptar
-                  </button>
+                  <NavLink to="/clientes">
+                    <button className="primary-button" onClick={handleSuccess}>
+                      Aceptar
+                    </button>
+                  </NavLink>
                 </div>
               </div>
             </Modal>
